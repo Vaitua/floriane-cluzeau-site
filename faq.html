@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Floriane Cluzeau · Drainage Lymphatique Méthode Nado® Muret</title>
+<meta name="description" content="Toutes vos questions sur le drainage lymphatique Méthode Nado® à Muret : déroulement, tarifs, contre-indications, réservation. Floriane Cluzeau répond.">
+<link rel="canonical" href="https://florianecluzeau.fr/faq.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fond:#F5F0E8;--encre:#3D2E24;--encre-2:#7A5C4A;--or:#A9824F;--or-clair:#C4976A;
+  --rosee:#F0DCD3;--maxw:1120px;
+  --glass-bg:rgba(255,255,255,.46);--glass-bg-fort:rgba(255,255,255,.70);
+  --glass-blur:blur(22px) saturate(160%);--glass-bord:1px solid rgba(255,255,255,.65);
+  --glass-ombre:0 24px 60px rgba(63,58,52,.12),0 2px 8px rgba(63,58,52,.05);
+  --glass-rayon:24px;--r:cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+body{font-family:'Jost',sans-serif;font-weight:300;color:var(--encre);background:var(--fond);line-height:1.75;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+::selection{background:var(--rosee);color:var(--encre)}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.1;color:var(--encre)}
+img{max-width:100%;display:block}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:4px}
+em{font-style:italic;color:var(--or-clair)}
+
+/* FOND */
+.liquide{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;filter:blur(70px) saturate(110%)}
+.g{position:absolute;border-radius:46% 54% 58% 42%/48% 44% 56% 52%;mix-blend-mode:multiply;opacity:.55;will-change:transform}
+.g1{width:52vw;height:50vw;background:linear-gradient(140deg,#F2D8C8,#EDD0BB);top:-16vw;left:-12vw;animation:m1 28s ease-in-out infinite alternate}
+.g2{width:46vw;height:48vw;background:linear-gradient(140deg,#D8E8EC,#DCE9E4);top:10vh;right:-16vw;animation:m2 34s ease-in-out infinite alternate}
+.g3{width:40vw;height:38vw;background:linear-gradient(140deg,#EDE2C4,#F0D4C8);bottom:-14vw;left:28vw;animation:m3 40s ease-in-out infinite alternate}
+@keyframes m1{0%{transform:translate(0,0)}100%{transform:translate(6vw,8vh) rotate(20deg)}}
+@keyframes m2{0%{transform:translate(0,0)}100%{transform:translate(-8vw,10vh) rotate(-18deg)}}
+@keyframes m3{0%{transform:translate(0,0) scale(1)}100%{transform:translate(5vw,-8vh) scale(1.14) rotate(14deg)}}
+
+/* VERRE */
+.verre{background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:var(--glass-bord);border-radius:var(--glass-rayon);box-shadow:var(--glass-ombre),inset 0 1px 0 rgba(255,255,255,.9);overflow:hidden;position:relative;}
+.verre::before{content:"";position:absolute;inset:0 0 auto 0;height:50%;background:linear-gradient(to bottom,rgba(255,255,255,.45),transparent);pointer-events:none;border-radius:inherit;}
+.lisible{background:var(--glass-bg-fort)}
+.eyebrow{font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--or);font-weight:400;display:block;margin-bottom:18px;}
+
+/* NAV */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:200;width:min(1080px,calc(100% - 32px));background:#EEE6DD;border:1px solid rgba(255,255,255,.95);border-radius:100px;box-shadow:0 14px 44px rgba(63,58,52,.14),inset 0 1px 0 rgba(255,255,255,.98);isolation:isolate;}
+nav::after{content:"";pointer-events:none;position:absolute;inset:0;border-radius:100px;background:linear-gradient(to bottom,rgba(255,255,255,.5) 0%,transparent 55%);}
+.nav-in{padding:10px 14px 10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.brand-logo{height:36px;width:auto;opacity:.9}
+.brand-text{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--encre);white-space:nowrap}
+.brand-text em{font-style:italic;color:var(--or)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--encre-2);transition:color .25s var(--r)}
+.nav-links a:hover,.nav-links a[aria-current]{color:var(--or)}
+@media(max-width:860px){.nav-links li:not(.cta-li){display:none}}
+
+/* BOUTONS */
+.btn{position:relative;display:inline-block;text-decoration:none;border-radius:100px;padding:15px 36px;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#fff;font-weight:400;overflow:hidden;font-family:'Jost',sans-serif;cursor:pointer;background:linear-gradient(135deg,#C2A06E,#A9824F);border:1px solid rgba(255,255,255,.5);box-shadow:0 14px 34px rgba(169,130,79,.35),inset 0 1px 0 rgba(255,255,255,.55);transition:transform .3s var(--r),box-shadow .3s var(--r);}
+.btn::after{content:"";position:absolute;top:0;left:-80%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-18deg);transition:left .55s ease;}
+.btn:hover{transform:translateY(-2px);box-shadow:0 20px 42px rgba(169,130,79,.42)}
+.btn:hover::after{left:120%}
+.btn.sec{background:rgba(255,255,255,.5);color:var(--encre);backdrop-filter:var(--glass-blur);border:1px solid rgba(255,255,255,.8);box-shadow:0 12px 30px rgba(63,58,52,.1),inset 0 1px 0 rgba(255,255,255,.95);}
+.btn.sec:hover{color:var(--or)}
+.nav-cta{padding:10px 24px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .95s var(--r),transform .95s var(--r)}
+.reveal.vu{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}
+
+/* LAYOUT */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+.section{position:relative;z-index:2;padding:100px 0;}
+
+/* PAGE HERO */
+.page-hero{
+  padding:140px 0 72px;
+  position:relative;z-index:2;text-align:center;
+}
+.page-hero h1{font-size:clamp(44px,5vw,68px);max-width:700px;margin:0 auto 20px;}
+.page-hero p{font-size:17px;color:var(--encre-2);max-width:500px;margin:0 auto;line-height:1.8}
+
+/* CATÉGORIES RAPIDES */
+.faq-cats{
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+  margin-top:36px;
+}
+.faq-cat-btn{
+  padding:8px 20px;border-radius:100px;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(255,255,255,.8);
+  color:var(--encre-2);cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s;
+  font-family:'Jost',sans-serif;font-weight:300;
+}
+.faq-cat-btn:hover,.faq-cat-btn.actif{
+  background:rgba(169,130,79,.12);
+  border-color:rgba(169,130,79,.4);
+  color:var(--or);
+}
+
+/* FAQ SECTIONS */
+.faq-section{margin-bottom:64px;}
+.faq-section-titre{
+  font-size:clamp(26px,3vw,36px);
+  margin-bottom:28px;
+  padding-bottom:16px;
+  border-bottom:1px solid rgba(169,130,79,.2);
+}
+
+/* ACCORDÉON */
+.faq-item{
+  border-radius:16px;
+  margin-bottom:10px;
+  overflow:hidden;
+}
+.faq-question{
+  width:100%;text-align:left;
+  padding:22px 28px;
+  background:transparent;border:none;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;
+  color:var(--encre);line-height:1.3;
+  transition:color .25s;
+}
+.faq-question:hover{color:var(--or)}
+.faq-chevron{
+  width:22px;height:22px;flex-shrink:0;
+  border:1px solid rgba(169,130,79,.4);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .3s var(--r),background .25s;
+  font-size:11px;color:var(--or);
+}
+.faq-item.ouvert .faq-chevron{
+  transform:rotate(180deg);
+  background:rgba(169,130,79,.12);
+}
+.faq-reponse{
+  max-height:0;overflow:hidden;
+  transition:max-height .45s var(--r),padding .35s var(--r);
+}
+.faq-reponse-inner{
+  padding:0 28px 24px;
+  font-size:15.5px;line-height:1.85;color:var(--encre-2);
+}
+.faq-reponse-inner p{margin-bottom:12px}
+.faq-reponse-inner p:last-child{margin-bottom:0}
+.faq-reponse-inner strong{color:var(--encre);font-weight:500}
+.faq-reponse-inner a{color:var(--or);text-decoration:none;border-bottom:1px solid rgba(169,130,79,.3);transition:border-color .2s}
+.faq-reponse-inner a:hover{border-color:var(--or)}
+.faq-item.ouvert .faq-reponse{max-height:800px;}
+
+/* CTA FINAL */
+.faq-cta{
+  text-align:center;padding:80px 40px 100px;
+  position:relative;z-index:2;
+}
+.faq-cta-card{max-width:620px;margin:0 auto;padding:56px 48px;border-radius:28px;}
+.faq-cta-card h2{font-size:clamp(30px,4vw,46px);margin-bottom:14px}
+.faq-cta-card p{font-size:16px;color:var(--encre-2);line-height:1.85;margin-bottom:32px}
+.faq-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{position:relative;z-index:2;border-top:1px solid rgba(169,130,79,.15);padding:48px 0 36px;font-size:13px;color:var(--encre-2);}
+.footer-in{max-width:var(--maxw);margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+.footer-brand{display:flex;align-items:center;gap:10px;}
+.footer-brand img{height:30px;width:auto;opacity:.7}
+.footer-brand span{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--encre)}
+.footer-brand span em{font-style:italic;color:var(--or)}
+.footer-links{display:flex;gap:28px;list-style:none}
+.footer-links a{text-decoration:none;letter-spacing:.1em;text-transform:uppercase;font-size:11px;transition:color .25s}
+.footer-links a:hover{color:var(--or)}
+.footer-copy{font-size:12px;opacity:.7}
+
+@media(max-width:900px){
+  .wrap{padding:0 24px}
+  .section{padding:72px 0}
+  .faq-cta-card{padding:36px 24px}
+  .page-hero{padding:120px 0 56px}
+}
+</style>
+</head>
+<body>
+
+<div class="liquide" aria-hidden="true">
+  <div class="g g1"></div>
+  <div class="g g2"></div>
+  <div class="g g3"></div>
+</div>
+
+<!-- NAV -->
+<nav aria-label="Navigation principale">
+  <div class="nav-in">
+    <a href="index.html" class="brand" aria-label="Accueil Floriane Cluzeau">
+      <img src="data:image/png;base64,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" alt="" class="brand-logo" aria-hidden="true">
+      <span class="brand-text">Floriane <em>Cluzeau</em></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="methode.html">La Méthode</a></li>
+      <li><a href="soins.html">Les Soins</a></li>
+      <li><a href="bilan.html">Bilan</a></li>
+      <li><a href="faq.html" aria-current="page">FAQ</a></li>
+      <li class="cta-li"><a href="https://www.planity.com/floriane-cluzeau-31600-muret" class="btn nav-cta" target="_blank" rel="noopener">Réserver</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="page-hero" role="banner">
+  <div class="wrap">
+    <span class="eyebrow reveal">Questions fréquentes</span>
+    <h1 class="reveal reveal-d1">Tout ce que vous voulez<br><em>savoir</em> avant de venir</h1>
+    <p class="reveal reveal-d2">Vous avez des questions sur le drainage lymphatique, la Méthode Nado®, ou le déroulement des séances ? Les réponses sont ici.</p>
+    <div class="faq-cats reveal reveal-d3">
+      <button class="faq-cat-btn actif" onclick="filtrer('tout', this)">Toutes</button>
+      <button class="faq-cat-btn" onclick="filtrer('methode', this)">La méthode</button>
+      <button class="faq-cat-btn" onclick="filtrer('seance', this)">Les séances</button>
+      <button class="faq-cat-btn" onclick="filtrer('tarifs', this)">Tarifs</button>
+      <button class="faq-cat-btn" onclick="filtrer('pratique', this)">Infos pratiques</button>
+    </div>
+  </div>
+</header>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="wrap" style="max-width:800px;">
+
+    <!-- LA MÉTHODE -->
+    <div class="faq-section reveal" data-cat="methode">
+      <h2 class="faq-section-titre">La <em>Méthode Nado®</em></h2>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Qu'est-ce que la Méthode Nado® exactement ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>La Méthode Nado® est une technique de drainage lymphatique manuelle créée et développée par Élisabeth Nado. Elle repose sur des gestes d'une précision exceptionnelle, pensés pour stimuler le système lymphatique en douceur — sans pression forte, sans douleur.</p>
+            <p>C'est une méthode bien-être et esthétique, et non médicale. Elle vise à réduire la rétention d'eau, alléger les jambes, affiner la silhouette et procurer une sensation de légèreté profonde.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          En quoi est-ce différent d'un massage classique ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Un massage classique travaille sur les muscles — il peut être vigoureux, profond, parfois inconfortable. La Méthode Nado® travaille sur le système lymphatique, juste sous la peau. Les pressions sont légères, enveloppantes, et respectueuses des tissus.</p>
+            <p>Certaines clientes s'endorment pendant la séance. Ce n'est pas un signe que rien ne se passe — c'est au contraire le signe que le corps relâche vraiment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Est-ce que c'est douloureux ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p><strong>Non, pas du tout.</strong> C'est même le principe fondamental de la méthode : <em>on ne doit plus souffrir pour être bien dans son corps</em>. Les gestes sont doux, fluides, jamais inconfortables. Si vous ressentez une quelconque douleur pendant une séance, signalez-le immédiatement.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Pour qui est faite la Méthode Nado® ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Pour toute femme souhaitant retrouver légèreté et confort dans son corps. Que vous ayez des jambes lourdes le soir, une sensation de gonflement, une rétention d'eau persistante, ou simplement l'envie de prendre soin de vous dans un espace dédié.</p>
+            <p>Il n'y a pas de profil type. Certaines clientes viennent pour des raisons esthétiques (silhouette, cellulite), d'autres pour des raisons fonctionnelles (jambes lourdes, fatigue). Beaucoup viennent pour les deux.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LES SÉANCES -->
+    <div class="faq-section reveal" data-cat="seance">
+      <h2 class="faq-section-titre">Les <em>séances</em></h2>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Comment se déroule la première séance ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>La première séance s'appelle <strong>l'Initiale</strong>. Elle dure 1h30 et se compose de trois temps :</p>
+            <p><strong>1. L'échange</strong> — nous discutons de votre corps, vos habitudes, vos objectifs et vos éventuelles contre-indications via un questionnaire préalable.</p>
+            <p><strong>2. La prise de mensurations</strong> — pour avoir une base de référence et mesurer concrètement les résultats dans le temps.</p>
+            <p><strong>3. La première séance de drainage complète</strong> — vous découvrez la méthode et ses sensations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Combien de séances faut-il pour voir des résultats ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Les premières sensations — légèreté, moins de gonflement — sont souvent perceptibles dès la première ou deuxième séance. Pour des résultats visibles et durables sur la silhouette, un accompagnement de 5 à 10 séances est recommandé.</p>
+            <p>Chaque corps est différent. C'est pourquoi nous prenons des mensurations dès la séance Initiale : pour mesurer, pas supposer.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Dois-je me préparer d'une façon particulière avant la séance ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Pas de préparation particulière nécessaire. Quelques bonnes pratiques cependant :</p>
+            <p>— Évitez les repas copieux dans l'heure qui précède.<br>
+            — Hydratez-vous bien avant et après la séance.<br>
+            — Venez avec des vêtements confortables et faciles à enlever.<br>
+            — Si vous avez des pathologies particulières, signalez-les lors de la réservation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Qu'est-ce que la séance Initiale et est-elle obligatoire ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p><strong>Oui, la séance Initiale est obligatoire</strong> pour toute nouvelle cliente. Elle n'est pas un simple "bilan" — c'est une séance complète de drainage qui inclut en plus un échange approfondi et une prise de mensurations.</p>
+            <p>Elle permet de construire un suivi vraiment personnalisé, adapté à votre corps et à vos objectifs. Sans elle, je ne peux pas proposer un accompagnement de qualité.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          À quelle fréquence faut-il faire les séances ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Pour un accompagnement (5 ou 10 séances), un rythme d'une séance par semaine est idéal pour laisser au corps le temps d'intégrer les bénéfices entre chaque séance.</p>
+            <p>Pour les séances d'entretien (L'Essentiel), une fois par mois ou par saison est généralement suffisant selon les besoins.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TARIFS -->
+    <div class="faq-section reveal" data-cat="tarifs">
+      <h2 class="faq-section-titre"><em>Tarifs</em> &amp; réservation</h2>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Quels sont les tarifs ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p><strong>L'Initiale</strong> (1h30, obligatoire pour toute nouvelle cliente) — <strong>160 €</strong></p>
+            <p><strong>Accompagnement 5 séances</strong> — <strong>600 €</strong> (soit 120 € / séance)</p>
+            <p><strong>Accompagnement 10 séances</strong> — <strong>1 000 €</strong> (soit 100 € / séance)</p>
+            <p><strong>L'Essentiel</strong> (séance d'entretien ~1h, pour clientes déjà suivies) — <strong>130 €</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Les séances sont-elles remboursées par la mutuelle ou la Sécurité Sociale ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Non. La Méthode Nado® est une méthode bien-être et esthétique, non médicale. Les séances ne sont pas remboursées par la Sécurité Sociale.</p>
+            <p>Certaines mutuelles proposent des remboursements pour les soins de bien-être — renseignez-vous directement auprès de la vôtre. Une facture peut être fournie sur demande.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Comment réserver ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>La réservation se fait en ligne 24h/24 via <a href="https://www.planity.com/floriane-cluzeau-31600-muret" target="_blank" rel="noopener">Planity</a>. Vous choisissez le créneau qui vous convient, et vous recevez une confirmation par email.</p>
+            <p>Pour toute question avant de réserver, vous pouvez me contacter par email à <a href="mailto:floriane.drainage@gmail.com">floriane.drainage@gmail.com</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Quelle est la politique d'annulation ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Merci de prévenir au moins <strong>24 heures à l'avance</strong> en cas d'annulation ou de report. Passé ce délai, la séance pourra être due en totalité.</p>
+            <p>Je suis bien sûr compréhensive en cas d'imprévu ou de problème de santé — l'essentiel est de me prévenir dès que possible.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFOS PRATIQUES -->
+    <div class="faq-section reveal" data-cat="pratique">
+      <h2 class="faq-section-titre"><em>Infos pratiques</em></h2>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Où se situe le cabinet ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Le cabinet est situé au <strong>23 Avenue du Président Vincent Auriol, 31600 Muret</strong>. Des informations complémentaires sur l'accès vous seront communiquées lors de la confirmation de votre rendez-vous.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Faites-vous des déplacements à domicile ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Oui. Je me déplace à votre domicile dans un <strong>rayon de 30 km autour de Muret</strong> : Toulouse Sud, Portet-sur-Garonne, Cugnaux, Seysses, Roques, Labarthe-sur-Lèze et environs.</p>
+            <p>Les déplacements à domicile se font sur demande et sous réserve de disponibilité. Contactez-moi pour en discuter.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Y a-t-il des contre-indications au drainage ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Oui. Certaines situations contre-indiquent absolument le drainage :</p>
+            <p><strong>Contre-indications absolues :</strong> thrombose veineuse / phlébite non stabilisée, infection aiguë (fièvre, virus, bactérie), insuffisance cardiaque décompensée, cancer en phase évolutive non stabilisée.</p>
+            <p><strong>Contre-indications relatives</strong> (drainage possible avec précautions et avis médical) : grossesse (surtout 1er trimestre), hypertension non contrôlée, asthme sévère, diabète avancé, maladies auto-immunes, problèmes cutanés actifs.</p>
+            <p>Un questionnaire préalable est rempli lors de chaque séance Initiale. En cas de doute, <a href="mailto:floriane.drainage@gmail.com">contactez-moi avant de réserver</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Dois-je me déshabiller entièrement ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Vous gardez vos sous-vêtements et êtes couvert(e) d'un drap. Seules les zones travaillées sont découvertes au fur et à mesure de la séance. Votre confort et votre pudeur sont respectés à chaque instant.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item verre lisible">
+        <button class="faq-question" onclick="toggle(this)" aria-expanded="false">
+          Comment contacter Floriane pour une question ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-reponse" role="region">
+          <div class="faq-reponse-inner">
+            <p>Par email : <a href="mailto:floriane.drainage@gmail.com">floriane.drainage@gmail.com</a></p>
+            <p>Je réponds généralement dans les 24 heures en semaine. Pour une réservation, le plus simple reste la plateforme <a href="https://www.planity.com/floriane-cluzeau-31600-muret" target="_blank" rel="noopener">Planity</a>, disponible 24h/24.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="faq-cta">
+  <div class="faq-cta-card verre lisible reveal">
+    <span class="eyebrow">Vous ne trouvez pas votre réponse ?</span>
+    <h2>Commencez par <em>votre bilan</em></h2>
+    <p>Le bilan personnalisé en 4 questions vous guide vers le soin qui correspond à votre situation — ou réservez directement la séance Initiale.</p>
+    <div class="faq-cta-btns">
+      <a href="bilan.html" class="btn">Faire mon bilan</a>
+      <a href="https://www.planity.com/floriane-cluzeau-31600-muret" class="btn sec" target="_blank" rel="noopener">Réserver l'Initiale</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-brand">
+      <img src="data:image/png;base64,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" alt="Logo FC">
+      <span>Floriane <em>Cluzeau</em></span>
+    </div>
+    <ul class="footer-links" role="list">
+      <li><a href="methode.html">La Méthode</a></li>
+      <li><a href="soins.html">Les Soins</a></li>
+      <li><a href="bilan.html">Bilan</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 · Floriane Cluzeau · Muret (31600)</p>
+  </div>
+</footer>
+
+<script>
+// Accordéon FAQ
+function toggle(btn) {
+  const item = btn.closest('.faq-item');
+  const reponse = item.querySelector('.faq-reponse');
+  const estOuvert = item.classList.contains('ouvert');
+
+  // Fermer tous les autres
+  document.querySelectorAll('.faq-item.ouvert').forEach(i => {
+    i.classList.remove('ouvert');
+    i.querySelector('button').setAttribute('aria-expanded', 'false');
+  });
+
+  if (!estOuvert) {
+    item.classList.add('ouvert');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// Filtre par catégorie
+function filtrer(cat, btnEl) {
+  document.querySelectorAll('.faq-cat-btn').forEach(b => b.classList.remove('actif'));
+  btnEl.classList.add('actif');
+
+  document.querySelectorAll('.faq-section').forEach(section => {
+    if (cat === 'tout' || section.dataset.cat === cat) {
+      section.style.display = '';
+    } else {
+      section.style.display = 'none';
+    }
+  });
+}
+
+// Reveal au scroll
+function revealInit() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vu'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setTimeout(() => el.classList.add('vu'), 50);
+    } else {
+      observer.observe(el);
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', revealInit);
+} else {
+  revealInit();
+}
+</script>
+</body>
+</html>
