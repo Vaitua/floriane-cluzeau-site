@@ -667,8 +667,14 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(169,130,79,.15);pad
       <div class="privacy">
         Votre adresse n'est utilisée que pour vous envoyer ce bilan. Elle n'est enregistrée dans aucune base de données et ne sera jamais utilisée à des fins commerciales.
       </div>
-      <input type="email" class="input-email" id="email-input" placeholder="votre@email.fr">
-      <button class="btn-email" onclick="soumettreEmail()">Recevoir mon bilan par email</button>
+      <form name="bilan-email" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            onsubmit="soumettreEmail(event)" style="margin:0;">
+        <input type="hidden" name="form-name" value="bilan-email">
+        <input type="hidden" name="bot-field" style="display:none">
+        <input type="hidden" name="profil" id="input-profil" value="">
+        <input type="email" name="email" class="input-email" id="email-input" placeholder="votre@email.fr" required>
+        <button type="submit" class="btn-email">Recevoir mon bilan par email</button>
+      </form>
       <button class="btn-skip" onclick="afficherResultat()">Voir mon profil directement →</button>
     </div>
 
@@ -780,14 +786,23 @@ function afficherEmail(){
   setTimeout(()=>ec.scrollIntoView({behavior:'smooth',block:'start'}),80);
 }
 
-function soumettreEmail(){
-  const email=document.getElementById('email-input').value.trim();
-  if(email&&email.includes('@')){
-    // Brancher EmailJS ici :
-    // emailjs.init('PUBLIC_KEY');
-    // emailjs.send('SERVICE_ID','TEMPLATE_ID',{to_email:email,...});
-    console.log('Email collecté :',email);
-  }
+function soumettreEmail(e){
+  e.preventDefault();
+  const email = document.getElementById('email-input').value.trim();
+  if(!email || !email.includes('@')){ afficherResultat(); return; }
+
+  // Remplir le champ profil caché
+  const profil = getProfil();
+  document.getElementById('input-profil').value = profil ? profil.tag || '' : '';
+
+  // Soumettre via fetch (sans recharger la page)
+  const form = e.target;
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(new FormData(form)).toString()
+  }).catch(() => {}); // On affiche le résultat même en cas d'erreur réseau
+
   afficherResultat();
 }
 
