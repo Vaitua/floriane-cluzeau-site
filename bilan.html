@@ -791,16 +791,43 @@ function soumettreEmail(e){
   const email = document.getElementById('email-input').value.trim();
   if(!email || !email.includes('@')){ afficherResultat(); return; }
 
-  // Remplir le champ profil caché
+  // Récupérer le profil complet
   const profil = getProfil();
-  document.getElementById('input-profil').value = profil ? profil.tag || '' : '';
+  
+  // Construire le message pour Floriane avec tous les résultats
+  const messageFloe = `
+NOUVEAU BILAN COMPLÉTÉ
 
-  // Soumettre via fetch (sans recharger la page)
-  const form = e.target;
-  fetch('/', {
+Email de la cliente: ${email}
+
+PROFIL: ${profil.tag}
+
+TITRE: ${profil.titre}
+
+INTRODUCTION: ${profil.intro}
+
+SOIN RECOMMANDÉ: ${profil.soin}
+
+DÉTAIL DU SOIN: ${profil.detail}
+
+CE QUE DIT LA SCIENCE: ${profil.science}
+
+RÉPONSES AU QUIZ:
+- Question 1 (Préoccupation principale): ${rep[1] ? rep[1] : 'Non répondu'}
+- Question 2 (Depuis quand): ${rep[2] ? rep[2] : 'Non répondu'}
+- Question 3 (Variation dans la journée): ${rep[3] ? rep[3] : 'Non répondu'}
+- Question 4 (Ce dont elle a besoin): ${rep[4] ? rep[4] : 'Non répondu'}
+`;
+
+  // Envoyer à Formspree
+  const formData = new FormData();
+  formData.append('email', email);
+  formData.append('message', messageFloe);
+  formData.append('profil', profil.tag);
+
+  fetch('https://formspree.io/f/meebvkzb', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(new FormData(form)).toString()
+    body: formData
   }).catch(() => {}); // On affiche le résultat même en cas d'erreur réseau
 
   afficherResultat();
