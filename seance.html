@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Votre s&eacute;ance — Floriane Cluzeau &middot; Drainage Lymphatique M&eacute;thode Nado&reg;</title>
+<meta name="description" content="Tout ce qu&apos;il faut savoir avant et apr&egrave;s votre s&eacute;ance de drainage lymphatique avec Floriane Cluzeau &agrave; Muret.">
+<link rel="canonical" href="https://florianecluzeau.fr/seance.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  --fond:       #F5F0E8;
+  --encre:      #3D2E24;
+  --encre-2:    #7A5C4A;
+  --encre-3:    #A08060;
+  --or:         #A9824F;
+  --or-clair:   #C4976A;
+  --corail:     #E8785A;
+  --rosee:      #F0DCD3;
+  /* Couleur signature "Apres" */
+  --ardoise:    #A9824F;
+  --ardoise-cl: #C4976A;
+  --ardoise-bg: rgba(169,130,79,.08);
+
+  --glass-bg:   rgba(255,255,255,.50);
+  --glass-fort: rgba(255,255,255,.78);
+  --glass-blur: blur(22px) saturate(155%);
+  --glass-bord: 1px solid rgba(255,255,255,.70);
+  --ombre:      0 20px 54px rgba(63,48,32,.10), 0 2px 8px rgba(63,48,32,.06);
+  --r:          26px;
+
+  /* Mode actif : avant = or, apres = ardoise */
+  --accent:     var(--or);
+  --accent-cl:  var(--or-clair);
+  --accent-bg:  rgba(169,130,79,.09);
+}
+body.mode-apres {
+  --accent:    var(--ardoise);
+  --accent-cl: var(--ardoise-cl);
+  --accent-bg: var(--ardoise-bg);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; overflow-x:hidden; }
+body {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  color: var(--encre);
+  background: var(--fond);
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  transition: background .6s ease;
+}
+::selection { background: var(--rosee); color: var(--encre); }
+h1,h2,h3,h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--encre);
+}
+em { font-style: italic; color: var(--accent-cl); transition: color .5s; }
+strong { font-weight: 500; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   FOND LIQUIDE AMBIANT
+   ============================================================ */
+.liquide {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none; overflow: hidden;
+  filter: blur(60px) saturate(115%);
+  transition: filter .8s;
+}
+.g {
+  position: absolute;
+  border-radius: 46% 54% 58% 42% / 48% 44% 56% 52%;
+  mix-blend-mode: multiply; opacity: .5;
+  transition: background 1.2s ease;
+}
+.g1 { width:52vw; height:50vw; top:-14vw; left:-10vw;
+      background: linear-gradient(140deg,#F2D8C8,#EDD0BB);
+      animation: m1 28s ease-in-out infinite alternate; }
+.g2 { width:46vw; height:48vw; top:18vh; right:-14vw;
+      background: linear-gradient(140deg,#D6E3EC,#DCE9E4);
+      animation: m2 34s ease-in-out infinite alternate; }
+.g3 { width:42vw; height:40vw; bottom:-12vw; left:28vw;
+      background: linear-gradient(140deg,#EDE2C4,#F0D4C8);
+      animation: m3 40s ease-in-out infinite alternate; }
+body.mode-apres .g1 { background: linear-gradient(140deg,#F2D8C8,#EDD0BB); }
+body.mode-apres .g2 { background: linear-gradient(140deg,#EDE2C4,#F0D4C8); }
+body.mode-apres .g3 { background: linear-gradient(140deg,#F0DCD3,#EDD0BB); }
+@keyframes m1{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(5vw,6vh) rotate(15deg)}}
+@keyframes m2{0%{transform:translate(0,0)}100%{transform:translate(-6vw,8vh) rotate(-13deg)}}
+@keyframes m3{0%{transform:translate(0,0) scale(1)}100%{transform:translate(4vw,-6vh) scale(1.1) rotate(10deg)}}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+nav {
+  position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
+  z-index: 100; width: min(1080px, calc(100% - 32px));
+  background: #EEE6DD;
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 100px;
+  box-shadow: 0 14px 44px rgba(63,48,32,.14), inset 0 1px 0 rgba(255,255,255,.98);
+  transition: background .6s;
+}
+body.mode-apres nav { background: #EEE6DD; }
+.nav-in {
+  padding: 12px 14px 12px 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.brand-logo { height: 36px; width: auto; opacity: .9; }
+.brand-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px; color: var(--encre); white-space: nowrap;
+}
+.brand-text em { font-style: italic; color: var(--or); }
+.nav-links { display:flex; gap:24px; list-style:none; align-items:center; }
+.nav-links a {
+  font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--encre-2); transition: color .25s;
+}
+.nav-links a:hover { color: var(--accent); }
+@media(max-width:840px) { .nav-links li:not(.cta-li) { display:none; } }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-block; border-radius: 100px;
+  padding: 15px 36px; font-size: 13px; letter-spacing: .16em;
+  text-transform: uppercase; color: #fff; font-weight: 400;
+  background: linear-gradient(135deg,#C2A06E,#A9824F);
+  border: 1px solid rgba(255,255,255,.5);
+  box-shadow: 0 12px 30px rgba(169,130,79,.35), inset 0 1px 0 rgba(255,255,255,.55);
+  transition: transform .3s, box-shadow .3s, background .5s;
+  cursor: pointer; font-family: 'Jost', sans-serif;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(169,130,79,.45); }
+body.mode-apres .btn {
+  background: linear-gradient(135deg,#E8785A,#C4976A);
+  box-shadow: 0 12px 30px rgba(232,120,90,.35), inset 0 1px 0 rgba(255,255,255,.5);
+}
+body.mode-apres .btn:hover { box-shadow: 0 18px 40px rgba(232,120,90,.45); }
+.btn-sec {
+  background: rgba(255,255,255,.55); color: var(--encre);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255,255,255,.8);
+  box-shadow: 0 8px 24px rgba(63,48,32,.08), inset 0 1px 0 rgba(255,255,255,.95);
+}
+.btn-sec:hover { box-shadow: 0 14px 32px rgba(63,48,32,.12); }
+.nav-cta { padding: 10px 24px; }
+
+/* ============================================================
+   VERRE
+   ============================================================ */
+.verre {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-bord); border-radius: var(--r);
+  box-shadow: var(--ombre), inset 0 1px 0 rgba(255,255,255,.88);
+  overflow: hidden;
+}
+.verre::before {
+  content: ""; position: absolute; inset: 0 0 auto;
+  height: 42%; background: linear-gradient(to bottom,rgba(255,255,255,.48),transparent);
+  pointer-events: none;
+}
+.verre.fort { background: var(--glass-fort); }
+.verre.accent-border { border-color: rgba(var(--accent-rgb),.3); }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap { max-width: 740px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
+.wrap-wide { max-width: 1080px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+.eyebrow {
+  font-size: 11px; letter-spacing: .36em; text-transform: uppercase;
+  color: var(--accent); font-weight: 400; display: block; margin-bottom: 16px;
+  transition: color .5s;
+}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .85s ease, transform .85s ease;
+}
+.reveal.vu { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity:1; transform:none; transition:none; }
+}
+
+/* ============================================================
+   HERO — SWITCHER
+   ============================================================ */
+.hero {
+  padding: 40px 0 60px;
+  text-align: center;
+  position: relative; z-index: 2;
+}
+.hero-eyebrow {
+  font-size: 12px; letter-spacing: .38em; text-transform: uppercase;
+  color: var(--encre-3); margin-bottom: 24px; display: block;
+}
+.hero-titre {
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 200; margin-bottom: 10px;
+  transition: opacity .4s;
+}
+.hero-titre em { font-style:italic; }
+.hero-sub {
+  font-size: 16px; color: var(--encre-2);
+  max-width: 440px; margin: 0 auto 44px; line-height: 1.82;
+  transition: opacity .4s;
+}
+
+/* SWITCHER PILULE */
+.switcher-wrap {
+  display: inline-flex;
+  background: rgba(255,255,255,.55);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 100px;
+  padding: 5px;
+  box-shadow: 0 8px 28px rgba(63,48,32,.1), inset 0 1px 0 rgba(255,255,255,.9);
+  position: relative;
+  margin-bottom: 56px;
+}
+.switcher-pill {
+  position: absolute;
+  top: 5px; left: 5px;
+  height: calc(100% - 10px);
+  border-radius: 100px;
+  background: linear-gradient(135deg, #C2A06E, #A9824F);
+  box-shadow: 0 4px 16px rgba(169,130,79,.4);
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1), width .35s ease, background .5s;
+  z-index: 0; pointer-events: none;
+}
+body.mode-apres .switcher-pill {
+  background: linear-gradient(135deg, #E8785A, #C4976A);
+  box-shadow: 0 4px 16px rgba(232,120,90,.4);
+}
+.switcher-btn {
+  position: relative; z-index: 1;
+  padding: 12px 28px; border-radius: 100px;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px; font-weight: 400; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--encre-2);
+  background: none; border: none; cursor: pointer;
+  transition: color .3s; white-space: nowrap;
+}
+.switcher-btn.actif { color: #fff; }
+
+/* ============================================================
+   SECTIONS CONTENU (commun)
+   ============================================================ */
+.section-avant,
+.section-apres {
+  position: relative; z-index: 2;
+  transition: opacity .45s ease, transform .45s ease;
+}
+.section-avant.hidden,
+.section-apres.hidden {
+  opacity: 0; pointer-events: none;
+  position: absolute; top: 0; left: 0; width: 100%;
+  transform: translateY(16px);
+}
+
+/* ============================================================
+   SECTION AVANT — TIMELINE
+   ============================================================ */
+.timeline-header {
+  text-align: center; margin-bottom: 56px;
+}
+.timeline-header h2 {
+  font-size: clamp(32px, 4.5vw, 52px); margin-bottom: 14px;
+}
+.timeline-header p { font-size:16px; color:var(--encre-2); max-width:500px; margin:0 auto; line-height:1.8; }
+
+/* Timeline steps */
+.timeline {
+  display: flex; flex-direction: column; gap: 0;
+  position: relative; max-width: 700px; margin: 0 auto 80px;
+}
+.timeline::before {
+  content: ""; position: absolute;
+  left: 38px; top: 20px; bottom: 20px; width: 1px;
+  background: linear-gradient(to bottom, var(--or-clair), rgba(169,130,79,.12));
+}
+@media(min-width:640px){
+  .timeline::before { left: 50%; transform: translateX(-50%); }
+}
+
+/* TIMELINE — layout simple et robuste */
+.timeline {
+  display: flex; flex-direction: column; gap: 0;
+  position: relative; max-width: 680px; margin: 0 auto 80px;
+  padding: 0 0 0 72px;
+}
+.timeline::before {
+  content: ""; position: absolute;
+  left: 23px; top: 24px; bottom: 24px; width: 1.5px;
+  background: linear-gradient(to bottom, var(--or-clair), rgba(169,130,79,.08));
+}
+
+.tl-item {
+  display: flex; align-items: flex-start; gap: 0;
+  padding: 0 0 24px 0; position: relative;
+}
+
+.tl-node {
+  position: absolute; left: -49px; top: 0;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1;
+}
+.tl-icon {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--glass-fort);
+  border: 1px solid rgba(255,255,255,.88);
+  box-shadow: 0 4px 18px rgba(63,48,32,.1), inset 0 1px 0 rgba(255,255,255,.95);
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(10px); flex-shrink: 0;
+}
+.tl-icon svg { width:20px; height:20px; }
+
+/* Plus de .tl-time flottant — le temps est dans la carte */
+
+.tl-content {
+  width: 100%;
+  padding: 22px 26px; border-radius: 20px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: var(--glass-bord);
+  box-shadow: var(--ombre), inset 0 1px 0 rgba(255,255,255,.85);
+  transition: transform .25s, box-shadow .25s;
+}
+.tl-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 60px rgba(63,48,32,.14), inset 0 1px 0 rgba(255,255,255,.9);
+}
+.tl-content-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px; margin-bottom: 10px; flex-wrap: wrap;
+}
+.tl-content h3 { font-size: 19px; margin: 0; }
+.tl-duree {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px; font-weight: 300; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--or-clair);
+  white-space: nowrap; flex-shrink: 0;
+}
+.tl-content p { font-size: 14.5px; color: var(--encre-2); line-height: 1.78; }
+.tl-tag {
+  display: inline-block; margin-top: 10px;
+  padding: 3px 12px; border-radius: 100px;
+  font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+  background: rgba(169,130,79,.1); color: var(--or); border: 1px solid rgba(169,130,79,.2);
+}
+
+/* PRÉPARATION — cartes en grille */
+.prep-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-bottom: 80px;
+}
+.prep-card {
+  padding: 24px 22px;
+  border-radius: 20px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: var(--glass-bord);
+  box-shadow: var(--ombre);
+  transition: transform .25s;
+}
+.prep-card:hover { transform: translateY(-2px); }
+.prep-card-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: var(--accent-bg);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+  transition: background .5s;
+}
+.prep-card h4 { font-size: 16px; margin-bottom: 8px; }
+.prep-card p { font-size: 13.5px; color: var(--encre-2); line-height: 1.7; }
+
+/* BLOC ADRESSE */
+.adresse-bloc {
+  display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start;
+  padding: 32px 36px; margin-bottom: 80px;
+}
+.adresse-bloc h3 { font-size: 22px; margin-bottom: 10px; }
+.adresse-bloc p { font-size: 15px; color: var(--encre-2); line-height: 1.75; }
+.adresse-map {
+  width: 120px; height: 120px; border-radius: 16px;
+  background: linear-gradient(135deg, rgba(169,130,79,.15), rgba(169,130,79,.05));
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; border: 1px solid rgba(169,130,79,.2);
+}
+.adresse-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.adresse-btn {
+  padding: 9px 20px; border-radius: 100px;
+  font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  font-family: 'Jost', sans-serif; font-weight: 400; cursor: pointer;
+  border: 1px solid rgba(169,130,79,.35); color: var(--or);
+  background: rgba(169,130,79,.08); transition: all .2s;
+}
+.adresse-btn:hover { background: rgba(169,130,79,.16); }
+
+/* ============================================================
+   SECTION APRÈS
+   ============================================================ */
+.apres-header {
+  text-align: center; margin-bottom: 56px;
+}
+.apres-header h2 { font-size: clamp(32px, 4.5vw, 52px); margin-bottom: 14px; }
+.apres-header p { font-size:16px; color:var(--encre-2); max-width:500px; margin:0 auto; line-height:1.8; }
+
+/* Grille temporelle */
+.tempo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px; margin-bottom: 60px;
+}
+.tempo-card {
+  padding: 28px 26px; border-radius: 22px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: var(--glass-bord);
+  box-shadow: var(--ombre), inset 0 1px 0 rgba(255,255,255,.85);
+  position: relative; overflow: hidden;
+  transition: transform .25s;
+}
+.tempo-card:hover { transform: translateY(-3px); }
+.tempo-band {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--corail), var(--or));
+}
+.tempo-quand {
+  font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--ardoise-cl); margin-bottom: 14px; display: block;
+}
+.tempo-card h3 { font-size: 20px; margin-bottom: 10px; }
+.tempo-card p { font-size: 14.5px; color: var(--encre-2); line-height: 1.78; }
+.tempo-badge {
+  display: inline-block; margin-top: 12px;
+  padding: 3px 12px; border-radius: 100px;
+  font-size: 10.5px; letter-spacing: .15em; text-transform: uppercase;
+  background: var(--ardoise-bg); color: var(--ardoise); border: 1px solid rgba(61,107,94,.2);
+}
+
+/* Hydratation — visuel */
+.hydra-section {
+  margin-bottom: 60px;
+}
+.hydra-inner {
+  padding: 36px;
+  display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center;
+}
+@media(max-width:580px){ .hydra-inner { grid-template-columns: 1fr; } }
+.hydra-content h3 { font-size: 24px; margin-bottom: 12px; }
+.hydra-content p { font-size: 15px; color: var(--encre-2); line-height: 1.82; }
+.hydra-visuel {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.hydra-verre {
+  width: 56px;
+  border-radius: 4px 4px 8px 8px;
+  border: 1.5px solid rgba(61,107,94,.35);
+  position: relative; overflow: hidden;
+  background: rgba(255,255,255,.3);
+}
+.hydra-eau {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(61,107,94,.45), rgba(90,144,128,.2));
+  border-radius: 0 0 6px 6px;
+  animation: vague 3s ease-in-out infinite;
+}
+@keyframes vague {
+  0%,100%{transform:scaleX(1)}
+  50%{transform:scaleX(1.04)}
+}
+.hydra-label { font-size: 11px; letter-spacing:.12em; color: var(--ardoise-cl); }
+
+/* Éviter / Recommandé */
+.bilan-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 20px; margin-bottom: 60px;
+}
+.bilan-card { padding: 28px 26px; }
+.bilan-card h3 { font-size: 20px; margin-bottom: 16px; }
+.bilan-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.bilan-list li {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 14.5px; color: var(--encre-2); line-height: 1.65;
+}
+.bilan-list li::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 7px;
+}
+.bilan-card.eviter .bilan-list li::before { background: rgba(232,120,90,.7); }
+.bilan-card.recommande .bilan-list li::before { background: var(--ardoise-cl); }
+
+/* Progression — timeline suivi -->
+.suivi-section { margin-bottom: 60px; }
+.suivi-line {
+  display: flex; gap: 0; position: relative;
+  overflow-x: auto; padding-bottom: 8px;
+}
+.suivi-line::before {
+  content:""; position:absolute; top:24px; left:32px; right:32px; height:1px;
+  background: linear-gradient(90deg,var(--ardoise-cl),rgba(61,107,94,.15));
+}
+.suivi-etape {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  min-width: 120px; flex: 1;
+  padding-top: 10px;
+}
+.suivi-dot {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: white; border: 2px solid var(--ardoise-cl);
+  position: relative; z-index: 1; flex-shrink: 0;
+  transition: background .3s, transform .3s;
+}
+.suivi-etape.active .suivi-dot {
+  background: var(--ardoise); border-color: var(--ardoise);
+  transform: scale(1.3);
+  box-shadow: 0 0 0 4px rgba(61,107,94,.15);
+}
+.suivi-texte { text-align: center; }
+.suivi-texte strong { font-size: 13px; display:block; color: var(--encre); margin-bottom:4px; }
+.suivi-texte span { font-size: 12px; color: var(--encre-3); line-height: 1.5; }
+
+/* ============================================================
+   CTA FINAL
+   ============================================================ */
+.cta-final {
+  position: relative; z-index: 2;
+  text-align: center; padding: 0 28px 100px;
+}
+.cta-box {
+  max-width: 600px; margin: 0 auto; padding: 52px 44px;
+  border-radius: 32px;
+}
+.cta-box h2 { font-size: clamp(28px,4vw,44px); margin-bottom: 16px; }
+.cta-box p { color: var(--encre-2); font-size:15px; line-height:1.8; max-width:420px; margin:0 auto 32px; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  position: relative; z-index: 2;
+  border-top: 1px solid rgba(169,130,79,.15);
+  padding: 48px 0 36px; font-size: 13px; color: var(--encre-2);
+}
+.footer-in {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 40px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;
+}
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand img { height: 30px; width: auto; opacity: .7; }
+.footer-brand span { font-family:'Cormorant Garamond',serif; font-size: 18px; color: var(--encre); }
+.footer-brand em { font-style:italic; color:var(--or); }
+.footer-links { display:flex; gap:28px; list-style:none; }
+.footer-links a { text-decoration:none; letter-spacing:.1em; text-transform:uppercase; font-size:11px; transition:color .25s; }
+.footer-links a:hover { color:var(--accent); }
+.footer-copy { font-size:12px; opacity:.7; }
+@media(max-width:900px){ .footer-in{ flex-direction:column; text-align:center; } }
+</style>
+</head>
+<body class="mode-avant">
+
+<!-- FOND LIQUIDE -->
+<div class="liquide">
+  <div class="g g1"></div><div class="g g2"></div><div class="g g3"></div>
+</div>
+
+<!-- NAV -->
+<nav aria-label="Navigation principale">
+  <div class="nav-in">
+    <a href="index.html" class="brand" aria-label="Accueil Floriane Cluzeau">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAqCAYAAABLGYAnAAAKQElEQVR42q1YaXQUVRb+7qvqTmfrBJXgqMgqOXQQAsjqkhzHMyooo0I1ENkTElCEkAEMCFRXgAwTNhdAgwbXgWNqhuO4cXB0TOvRIwrKDNAoIAk7NgHM0km6u6ru/OgOBibBCHP/VJ8+r959937fvferJ+EqTQWEt/m3qopMQEoZfJR8PnB79yBcuxHwi0NmdmxYmt/v7E9n+4dMo1/YCKXWna9puKljx+rUgYM2jHty/jeqqgpN0yz5t3hhZnK73TZd18PL50x/Lik56auntNVb1quFPf0njz8YDodGFU4enSYLKcZg84jJ+IGF2DZ8+J3p1SePZh+pPPQfAN8AFQKARe1zCtqUlyvnbdoUBgB7jAOFWX88IeyyP9gYNCzL6CbJtlM2W8yOpOuTPxqaec+3wx8Yex4AXlzyp0erjv24qkNKyp6nS0ryiJLOMzOIiK/oXFVVgYoKoXm9BgCc3rMjfuub70485T+dZQTqhoiEuN3xDuffune7advURauqwFbL18UL6rzZ/lOnimMS42cVrX99czAYlInIuCLmzExERAAsAHhzXVHq93v35ZGByabF1VKcdMwKWf3Wvv1eSlNj48W91IwMCZmZFgBommZt3FjY4dE/PGz7Xc87/Zdzo1WnqpoR4QERytcVD1s8xb1lweQxgaXZYz9fmZ8zxma3o2RuTr5n+oRdIIKiKHbmSzL4PwEpiiK15k9uuYCITADGG6uWdTt65MCaffv3jJJjbNtvvKnzvfnL1+40wiEAQG1d/agYIX0BZnL5/RYRMTOT7nYLt66biqJIuq6bACiKr9keNicszRn9l0WTRtcVzZj40aaSRenNgSiKIqmqKjOzWJybdXrt/LzHAaC8XJG4RbSyzdbuMpajKaONxYuy1JxxawyLz3ZPS30kZ2HJJ7BMKIDkUlUGwJqmmbcnObqzxcmdunf/OpozEHRm5tji2TmrG2rPP5TQIWVb4bqXCqK8aRNnQUQMgM+cOPN4bFLyljVbt/fJefrPnyijTUlVVaEDpqZpVprPRwBw9HTlQJBVkzVjQSUASjh9WmZmWjZryvbGYJP7xptvWRaoq8l/0bPw9wC4vA28L2IeOSAebIl/BDPt4sL9Lj8BQH2g6W4i7CciY+DAgbYRc/KDK6v2PtvUUD9wSv783r36DT2x8qnsydXn/AqAj/f7/W2mXzTDDYAUJYJflCyXmE/zMgAYYXNIvN2xEwB2795tbCxa0D8QCMzpmz5gVK9+Q0+oaoYcNkO76xsaOv0a5qIl33RdN6kVjJiZdMBk5gQwp8YlOD8DACFJfOJY1Wt22f7WuDnPfDpXUWI1zWvINlsQhikBQEU7nbdtHg8BwOsrl6ZaMO1de/T9DgCeXTjzMcniviMfGlugAsLpggkA4XAYEhP9lsjb9h1d5z9XPdw0+dionBy/kCSc859f7nQ6Nw8YOfKsT1EIFX4LAJoam2QhKAQAmdcceUUkeQ0NjcNjYhwHiQjrF88eGg6FU9MG3q6CmVwuF/tSIrxISHKmJSYkhv4vkWterwkihJuCfWUp5jMAfPbk6QIhSf8cMXHOCUWB0DTNAhQAQGNdfWx9U2D/NTuPNiH+dNvmZALfmpyUXLFr1y5bk2mN6Nip44ZolQCRKrEkWYaA6OxIiD8OAMjMvHrnuu4WALBn1550IRHNWlGyd8drzz1MgqwMd/a/FEURilLePEvZCIdjwoaRaLeJH6L/WVft/MLHHUS5oki1NYG7DMs6TETBUNjMdcbFvZmenh7Qdd0kIlZVlQBgc7GnhyzLsX36pR2PFIqHr0bDUbmiCLeuWwB42YxJ79jtsmmLd649VXVoR1LSdacbw6HjyTfcUDN/5dKJoE4BAnhNwSzlQs2555e9suVmIrKuNMdbjby0tNQGgN26bjKzfemc7LF1NdVDq3+qHnGy6sgHxCzXNzR+GKivqwDDi0M1YV1RRKQi6vrLklxFRJYCSFcaLJcLSFIAkZeXF2bmuOKCGfOWTBmbF7SMWAYl9R3U/+4zx4+PqW9qvKOodOuc5pcWlGy4KBjCRniQTZZ2AYArI4Pg9babcKwD5gva7EeX5Li/Dwbqs+OTkp/u3z89NzYu4cKkeUVfnqurGx5jj63IyMiQ1cmTHZEZH2W6JIHZ6uWw275AGx1GVVXRDLdogb3Yt2+ffcUTkzefOnpyS1ySs1Qrfavnwuc3vfVj1ZHBJvMBZkuSSEpLvM5Z4fV6jbSRDWFN0wyPRyUA/GpJSU8mcWuXLp13RbbNvJzpFOkHEShERLepxMz2f5Rt3NbYFLyv/6ChAxetLVtBRKwoihQOhQbLjpgvP9606WYbCan3Xff8OzJ6IyXm8WgMAD83nDcdzg7rlALPsaiIvBRvIl6/fFH6Fzv+nnKJ7hNCoGyVNuTgwYNOgJCbm2uLajBp6fTx1asXPXn/mtnTRy+ZNq5SSBIQSV+7rLxckQDQ5rXLBzyTO8F4/69l3YnoF8wty0L2fHVnr169alWVRWlpqQGAX39pxY0Wc/z4SVN3NzY03mGz26os04Ti01ot09aUqq5H+FTp8y2xgT5/aELOkTFjxkjicjIwM2kaLN0d6WxnDx8bwIKCndOGVDcZwdssy/QBgMufQa13xEuFiKqqQtd16401xT0ZeKRbty4FYIZyOds1TbOimg7N8scIGsMsw/zeMk3YHLG9kxOSzv9az75EAfl8BCKuPHxgjSxExeSFK75TFEVy67rZJm6+lBSO1G1osCRod0QkBB0/117wAUCaz8ftwVrXdevdsvWDrJA5quctXWcDvxBNtD1QdIuIEAqHeiQlJn4LAEbIMGXJ3tReojVj/fVXO1dZJL0zYenyvYqiiGZoxJXG6Pa3N13HFjrEJyTtaVa5sXFx7WJ5eVQBby5aPIKNYMbtgwcVACCXy8VXjLyZbIf3H3AJSYj7hqUfih7K/PlCrdEeDaBHnqLqxNFXExITV7tzZ1eWK0pUdLTe2y/R6IH6QF+LcbLXiIm1ABAb65AFiZRf1XyZmZLu9RrFc7OL2QrZCp99Y8m3p2okJTIh2zfP6+trbk2MjzvLzLEAAUynbA57WssDtta7Na/XePH5on7BmsDC1NvSJhFRk6JEdrjSVIuWR0QIOoTcMVRbN7yspGgqwBttNvlQQ6gpreWaVr7rwczSM9Pc7yUmOl+eWOh5X1UzZLdbN36TkgkZZpe6YKMU73R+CADJHZK9Vijcj5lt5eWwWooRZiaPx22zx8RYWk7WFlnYGgufe2UmsyVpmtdst5hwuVQGgJTOXdd3dfWZNn7m3CoAuOfuBz4gC84XFs/NIAKraobUnGoi4mXLt4VWz5uxNRAKZj4wfvy9utsNNfqFe03XXaqqygCwYubUMnV61j5mtkcjFtFn3IrZ016eP/GxM2sL87u3GChXdw+nKIqkAIjKKfJ4PKTcPyz57Vc2V8Zfn7wt66kpT5SV7QjfdoPU+4d9B9ab4VDvHn36DM0u0I60uJ1o0/4Ltorn2aNfqMgAAAAASUVORK5CYII=" alt="" class="brand-logo" aria-hidden="true">
+      <span class="brand-text">Floriane <em>Cluzeau</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="methode.html">La M&eacute;thode</a></li>
+      <li><a href="soins.html">Les Soins</a></li>
+      <li><a href="bilan.html">Bilan</a></li>
+      <li><a href="seance.html" aria-current="page">Votre S&eacute;ance</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li class="cta-li"><a href="https://www.planity.com/floriane-cluzeau-31600-muret" class="btn nav-cta" target="_blank" rel="noopener">R&eacute;server</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero reveal">
+  <div class="wrap">
+    <span class="hero-eyebrow">Floriane Cluzeau &middot; Drainage Lymphatique M&eacute;thode Nado&reg;</span>
+    <h1 class="hero-titre" id="hero-titre">Avant votre<br><em>premi&egrave;re s&eacute;ance</em></h1>
+    <p class="hero-sub" id="hero-sub">Ce que vous devez savoir, ce que vous allez ressentir, et comment vous pr&eacute;parer pour en tirer le meilleur.</p>
+
+    <!-- SWITCHER -->
+    <div class="switcher-wrap" id="switcher">
+      <div class="switcher-pill" id="switcher-pill"></div>
+      <button class="switcher-btn actif" id="btn-avant" onclick="basculer('avant')">Avant la s&eacute;ance</button>
+      <button class="switcher-btn" id="btn-apres" onclick="basculer('apres')">Apr&egrave;s la s&eacute;ance</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION AVANT
+     ============================================================ -->
+<div class="section-avant" id="section-avant">
+
+  <!-- TIMELINE DÉROULÉ -->
+  <div class="wrap-wide">
+    <div class="timeline-header reveal">
+      <span class="eyebrow">Le d&eacute;roul&eacute; de votre s&eacute;ance</span>
+      <h2>Ce qui vous attend,<br><em>minute par minute</em></h2>
+      <p>Pas de surprise. Chaque &eacute;tape est douce, pens&eacute;e pour vous, et adapt&eacute;e &agrave; ce que vous avez partag&eacute; lors de la prise de rendez-vous.</p>
+    </div>
+
+    <div class="timeline" id="timeline-avant">
+      <!-- Étape 1 — Accueil -->
+      <div class="tl-item reveal">
+        <div class="tl-node">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.4" stroke-linecap="round">
+              <path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5" fill="none"/>
+            </svg>
+          </div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-content-header">
+            <h3>L&apos;accueil</h3>
+            <span class="tl-duree">30 &mdash; 45 min</span>
+          </div>
+          <p>Un &eacute;change approfondi pour cibler au mieux ce qui vous am&egrave;ne et d&eacute;finir ensemble l&apos;accompagnement le plus adapt&eacute;. Je vous propose &eacute;galement une boisson &agrave; votre convenance &mdash; c&apos;est aussi un moment pour vous installer et vous sentir bien avant de commencer.</p>
+          <span class="tl-tag">Arriv&eacute;e</span>
+        </div>
+      </div>
+      <!-- Étape 2 — Mensurations -->
+      <div class="tl-item reveal">
+        <div class="tl-node">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.4" stroke-linecap="round">
+              <path d="M2 12h20M12 2v20"/>
+              <rect x="5" y="5" width="14" height="14" rx="2"/>
+            </svg>
+          </div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-content-header">
+            <h3>Les mensurations</h3>
+            <span class="tl-duree">5 min</span>
+          </div>
+          <p>Avant le premier soin, je note vos mensurations de r&eacute;f&eacute;rence &mdash; un point de d&eacute;part objectif pour mesurer votre progression au fil des s&eacute;ances. Ces donn&eacute;es restent strictement confidentielles.</p>
+          <span class="tl-tag">Point de d&eacute;part</span>
+        </div>
+      </div>
+      <!-- Étape 3 — Installation -->
+      <div class="tl-item reveal">
+        <div class="tl-node">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.4" stroke-linecap="round">
+              <rect x="3" y="8" width="18" height="13" rx="2"/>
+              <path d="M7 8V6a5 5 0 0110 0v2"/>
+              <circle cx="12" cy="14" r="1.5" fill="#A9824F"/>
+            </svg>
+          </div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-content-header">
+            <h3>L&apos;installation</h3>
+            <span class="tl-duree">5 min</span>
+          </div>
+          <p>Vous gardez vos sous-v&ecirc;tements. Un drap vous couvre &agrave; tout moment &mdash; seule la zone travaill&eacute;e est d&eacute;couverte, progressivement. La temp&eacute;rature de la pi&egrave;ce est r&eacute;gl&eacute;e pour votre confort.</p>
+          <span class="tl-tag">Mise en place</span>
+        </div>
+      </div>
+      <!-- Étape 4 — Drainage -->
+      <div class="tl-item reveal">
+        <div class="tl-node">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.4" stroke-linecap="round">
+              <path d="M7 17c0-4 2-7 5-7s5 3 5 7"/>
+              <path d="M4 20h16"/>
+              <path d="M12 10V3M9 6l3-3 3 3"/>
+            </svg>
+          </div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-content-header">
+            <h3>Le drainage</h3>
+            <span class="tl-duree">60 &mdash; 75 min</span>
+          </div>
+          <p>Des pressions tr&egrave;s douces, lentes et rythm&eacute;es. Moins fortes que vous ne l&apos;imaginez probablement &mdash; c&apos;est &ccedil;a qui surprend le plus. La lymphe circule en superficie&nbsp;: trop de pression ne ferait que la bloquer.</p>
+          <span class="tl-tag">Le soin</span>
+        </div>
+      </div>
+      <!-- Étape 5 — Débriefing -->
+      <div class="tl-item reveal">
+        <div class="tl-node">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.4" stroke-linecap="round">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 3"/>
+            </svg>
+          </div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-content-header">
+            <h3>Le d&eacute;briefing</h3>
+            <span class="tl-duree">~10 min</span>
+          </div>
+          <p>On prend le temps d&apos;&eacute;changer apr&egrave;s. Ce que j&apos;ai observ&eacute;, les zones qui m&apos;ont parl&eacute;, ce que je vous recommande pour les heures qui suivent. Et on d&eacute;finit ensemble la suite si vous le souhaitez.</p>
+          <span class="tl-tag">Bilan final</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRÉPARATION -->
+  <div class="wrap-wide" style="margin-bottom:80px">
+    <div class="timeline-header reveal">
+      <span class="eyebrow">Pr&eacute;paration</span>
+      <h2>Comment se pr&eacute;parer<br><em>pour en tirer le meilleur</em></h2>
+    </div>
+    <div class="prep-grid">
+      <div class="prep-card reveal">
+        <div class="prep-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.5" stroke-linecap="round">
+            <path d="M12 2a9 9 0 100 18A9 9 0 0012 2z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h4>2h avant</h4>
+        <p>Evitez un repas lourd. Une digestion active mobilise &eacute;nergie et circulation &mdash; mieux vaut arriver l&eacute;g&egrave;re pour que le drainage puisse agir pleinement.</p>
+      </div>
+      <!-- Vêtements : icône t-shirt -->
+      <div class="prep-card reveal">
+        <div class="prep-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6l3-3h3a3 3 0 006 0h3l3 3-3 3v10H6V9L3 6z"/>
+          </svg>
+        </div>
+        <h4>Les v&ecirc;tements</h4>
+        <p>Venez avec quelque chose de confortable et facile &agrave; enlever. Pas de collants serr&eacute;s, pas de gaine &mdash; votre corps a besoin d&apos;&ecirc;tre &agrave; l&apos;aise d&egrave;s l&apos;arriv&eacute;e.</p>
+      </div>
+      <!-- Hygiène : icône savon -->
+      <div class="prep-card reveal">
+        <div class="prep-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="11" width="16" height="10" rx="2"/>
+            <path d="M9 11V8a3 3 0 016 0v3"/>
+            <circle cx="15" cy="6" r="1" fill="#A9824F"/>
+            <path d="M12 15v2"/>
+          </svg>
+        </div>
+        <h4>L&apos;hygi&egrave;ne</h4>
+        <p>Pas de cr&egrave;me ni de parfum sur les zones &agrave; drainer. La peau doit &ecirc;tre propre et s&egrave;che &mdash; les produits glissants g&ecirc;nent le contact n&eacute;cessaire aux techniques Nado&reg;.</p>
+      </div>
+      <!-- Hydratation : icône verre d'eau -->
+      <div class="prep-card reveal">
+        <div class="prep-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 3h10l-1.5 14a2 2 0 01-2 1.8h-3a2 2 0 01-2-1.8L7 3z"/>
+            <path d="M6 8h12"/>
+          </svg>
+        </div>
+        <h4>L&apos;hydratation</h4>
+        <p>Buvez normalement dans les heures qui pr&eacute;c&egrave;dent. Pas de je&ucirc;ne hydrique &mdash; la lymphe a besoin de fluidit&eacute; pour circuler. Un corps bien hydrat&eacute; r&eacute;pond mieux au drainage.</p>
+      </div>
+      <!-- Contre-indications : sens interdit -->
+      <div class="prep-card reveal">
+        <div class="prep-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="#A9824F" stroke-width="1.5" fill="rgba(169,130,79,.08)"/>
+            <rect x="5" y="10.5" width="14" height="3" rx="1.5" fill="#A9824F"/>
+          </svg>
+        </div>
+        <h4>Contre-indications</h4>
+        <p>Si vous avez de la fi&egrave;vre, une infection active ou une thrombose non stabilis&eacute;e, contactez-moi avant de venir. La s&eacute;ance sera report&eacute;e sans frais &mdash; votre s&eacute;curit&eacute; passe avant tout.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SENSATIONS -->
+  <div class="wrap reveal" style="margin-bottom:80px">
+    <div class="verre fort" style="padding:40px">
+      <span class="eyebrow">Ce que vous allez ressentir</span>
+      <h2 style="font-size:clamp(28px,4vw,42px);margin-bottom:20px">Des sensations<br><em>que vous n&apos;attendez pas</em></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:8px">
+        <div>
+          <strong style="font-size:15px;display:block;margin-bottom:8px;color:var(--encre)">Une chaleur douce</strong>
+          <p style="font-size:14.5px;color:var(--encre-2);line-height:1.75">La circulation qui se relance cr&eacute;e une sensation de chaleur progressive dans les zones drain&eacute;es. C&apos;est votre syst&egrave;me lymphatique qui reprend vie.</p>
+        </div>
+        <div>
+          <strong style="font-size:15px;display:block;margin-bottom:8px;color:var(--encre)">Une somnolence agr&eacute;able</strong>
+          <p style="font-size:14.5px;color:var(--encre-2);line-height:1.75">Le drainage active le syst&egrave;me parasympathique &mdash; la branche "repos" de votre syst&egrave;me nerveux. Il n&apos;est pas rare de s&apos;assoupir. C&apos;est un signe que &ccedil;a fonctionne.</p>
+        </div>
+        <div>
+          <strong style="font-size:15px;display:block;margin-bottom:8px;color:var(--encre)">Une l&eacute;g&egrave;ret&eacute; imm&eacute;diate</strong>
+          <p style="font-size:14.5px;color:var(--encre-2);line-height:1.75">En se relevant de la table, la plupart des clientes ressentent une diff&eacute;rence imm&eacute;diate dans leurs jambes ou leur ventre. Parfois subtile, parfois tr&egrave;s nette.</p>
+        </div>
+        <div>
+          <strong style="font-size:15px;display:block;margin-bottom:8px;color:var(--encre)">Une envie de silence</strong>
+          <p style="font-size:14.5px;color:var(--encre-2);line-height:1.75">Certaines clientes sortent tr&egrave;s silencieuses. Ce n&apos;est pas un malaise &mdash; c&apos;est le corps qui int&egrave;gre. Laissez-vous cet espace.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADRESSE -->
+  <div class="wrap reveal" style="margin-bottom:80px">
+    <div class="adresse-bloc verre fort">
+      <div class="adresse-map">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <path d="M24 4C16 4 10 10.5 10 18c0 10.5 14 26 14 26s14-15.5 14-26C38 10.5 32 4 24 4z" fill="rgba(169,130,79,.2)" stroke="#A9824F" stroke-width="1.5"/>
+          <circle cx="24" cy="18" r="5" fill="none" stroke="#A9824F" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div>
+        <h3>O&ugrave; vous rendre</h3>
+        <p>23 Avenue du Pr&eacute;sident Vincent Auriol<br><strong>31600 Muret</strong> &mdash; Haute-Garonne</p>
+        <p style="font-size:14px;color:var(--encre-3);margin-top:8px">Acc&egrave;s facilit&eacute; PMR &middot; Stationnement &agrave; proximit&eacute;</p>
+        <div class="adresse-actions">
+          <a href="https://maps.google.com/?q=23+Avenue+du+Pr%C3%A9sident+Vincent+Auriol+31600+Muret" target="_blank" rel="noopener" class="adresse-btn">Ouvrir dans Maps</a>
+          <a href="https://www.planity.com/floriane-cluzeau-31600-muret" target="_blank" rel="noopener" class="adresse-btn">Modifier mon RDV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /section-avant -->
+
+
+<!-- ============================================================
+     SECTION APRÈS
+     ============================================================ -->
+<div class="section-apres hidden" id="section-apres">
+
+  <div class="wrap-wide">
+    <div class="apres-header reveal">
+      <span class="eyebrow" style="color:var(--ardoise-cl)">Apr&egrave;s votre s&eacute;ance</span>
+      <h2>Ce que votre corps<br><em>fait maintenant</em></h2>
+      <p>Le drainage ne s&apos;arr&ecirc;te pas en quittant le cabinet. Les 24 heures qui suivent font partie du soin.</p>
+    </div>
+
+    <!-- GRILLE TEMPORELLE -->
+    <div class="tempo-grid">
+      <div class="tempo-card reveal">
+        <div class="tempo-band"></div>
+        <span class="tempo-quand">Dans l&apos;heure</span>
+        <h3>L&apos;envie d&apos;uriner</h3>
+        <p>Normal &mdash; attendue, m&ecirc;me. La lymphe r&eacute;activ&eacute;e achemine les liquides vers les reins. C&apos;est le signe le plus direct que la s&eacute;ance a bien fonctionn&eacute;. Restez proche d&apos;une salle de bain.</p>
+        <span class="tempo-badge">Signe positif</span>
+      </div>
+      <div class="tempo-card reveal">
+        <div class="tempo-band"></div>
+        <span class="tempo-quand">Dans les 2&ndash;4 heures</span>
+        <h3>Une fatigue douce</h3>
+        <p>Le syst&egrave;me parasympathique domine encore. Votre corps est dans un mode &ldquo;r&eacute;cup&eacute;ration actif&rdquo;. Une l&eacute;g&egrave;re fatigue est normale et b&eacute;n&eacute;fique &mdash; pas la peine de la combattre. Si vous pouvez vous reposer, faites-le.</p>
+        <span class="tempo-badge">Prot&eacute;gez cet &eacute;tat</span>
+      </div>
+      <div class="tempo-card reveal">
+        <div class="tempo-band"></div>
+        <span class="tempo-quand">Le lendemain</span>
+        <h3>La l&eacute;g&egrave;ret&eacute; qui reste</h3>
+        <p>C&apos;est souvent le lendemain matin que l&apos;effet est le plus perceptible &mdash; jambes plus l&eacute;g&egrave;res, ventre plus plat, visage d&eacute;gonfl&eacute;. Le corps a continu&eacute; &agrave; &eacute;liminer pendant la nuit.</p>
+        <span class="tempo-badge">Observez votre corps</span>
+      </div>
+      <div class="tempo-card reveal">
+        <div class="tempo-band"></div>
+        <span class="tempo-quand">Dans la semaine</span>
+        <h3>Les effets cumulatifs</h3>
+        <p>Si vous &ecirc;tes en accompagnement, les effets s&apos;accumulent s&eacute;ance apr&egrave;s s&eacute;ance. Le terrain s&apos;am&eacute;liore progressivement &mdash; la circulation devient plus fluide, les tissus r&eacute;pondent mieux.</p>
+        <span class="tempo-badge">Le processus continue</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HYDRATATION -->
+  <div class="wrap hydra-section reveal">
+    <div class="verre fort hydra-inner">
+      <div class="hydra-content">
+        <span class="eyebrow" style="color:var(--ardoise-cl)">Essentiel</span>
+        <h3>L&apos;hydratation, <em>ce soir</em></h3>
+        <p>La lymphe est compos&eacute;e &agrave; 96&nbsp;% d&apos;eau. Apr&egrave;s une s&eacute;ance, votre corps &eacute;limine davantage &mdash; il faut compenser. Visez <strong>1,5 &agrave; 2 litres d&apos;eau</strong> dans les heures qui suivent.</p>
+        <p style="margin-top:12px;font-size:14.5px;color:var(--encre-2);line-height:1.78">Privil&eacute;giez l&apos;eau plate &agrave; temp&eacute;rature ambiante. Les tisanes drainantes (bouleau, pr&ecirc;le, pissenlit) sont un bon compl&eacute;ment. &Eacute;vitez l&apos;alcool le soir m&ecirc;me &mdash; il contracte les vaisseaux et contrecarre le drainage.</p>
+      </div>
+      <div class="hydra-visuel" id="hydra-visuel">
+        <!-- Générée par JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉVITER / RECOMMANDÉ -->
+  <div class="wrap-wide reveal" style="margin-bottom:60px">
+    <div class="bilan-grid">
+      <div class="bilan-card verre fort eviter">
+        <h3>&Agrave; &eacute;viter aujourd&apos;hui</h3>
+        <ul class="bilan-list">
+          <li>L&apos;alcool &mdash; il contracte les vaisseaux lymphatiques</li>
+          <li>Le sport intense &mdash; votre corps est en mode r&eacute;cup&eacute;ration</li>
+          <li>Le sauna ou bain tr&egrave;s chaud &mdash; risque de vasodilatation excessive</li>
+          <li>Les repas tr&egrave;s sal&eacute;s &mdash; le sodium favorise la r&eacute;tention</li>
+          <li>Les v&ecirc;tements compressifs serr&eacute;s dans les heures imm&eacute;diates</li>
+        </ul>
+      </div>
+      <div class="bilan-card verre fort recommande">
+        <h3>Ce qui prolonge les effets</h3>
+        <ul class="bilan-list">
+          <li>Marcher 20&ndash;30 minutes &mdash; la pompe musculaire soutient le drainage</li>
+          <li>Surélever les jambes si possible &mdash; favorise le retour veineux</li>
+          <li>Dormir suffisamment &mdash; le corps &eacute;limine davantage la nuit</li>
+          <li>Une alimentation l&eacute;g&egrave;re le soir &mdash; fruits, l&eacute;gumes, bouillon</li>
+          <li>Observer les changements &mdash; noter ce que vous ressentez aide le suivi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESSION SUIVI -->
+  <div class="wrap suivi-section reveal" style="margin-bottom:80px">
+    <div class="verre fort" style="padding:36px">
+      <span class="eyebrow" style="color:var(--ardoise-cl)">Votre progression</span>
+      <h3 style="font-size:clamp(22px,3vw,30px);margin-bottom:28px">Ce &agrave; quoi vous pouvez vous attendre,<br><em>au fil des s&eacute;ances</em></h3>
+      <div class="suivi-line">
+        <div class="suivi-etape active">
+          <div class="suivi-dot"></div>
+          <div class="suivi-texte">
+            <strong>S&eacute;ance 1</strong>
+            <span>Premi&egrave;res sensations, d&eacute;couverte du corps</span>
+          </div>
+        </div>
+        <div class="suivi-etape">
+          <div class="suivi-dot"></div>
+          <div class="suivi-texte">
+            <strong>S&eacute;ances 2&ndash;3</strong>
+            <span>Les effets tiennent plus longtemps entre chaque s&eacute;ance</span>
+          </div>
+        </div>
+        <div class="suivi-etape">
+          <div class="suivi-dot"></div>
+          <div class="suivi-texte">
+            <strong>S&eacute;ances 4&ndash;6</strong>
+            <span>Le terrain se modifie, les tissus r&eacute;pondent mieux</span>
+          </div>
+        </div>
+        <div class="suivi-etape">
+          <div class="suivi-dot"></div>
+          <div class="suivi-texte">
+            <strong>Au-del&agrave;</strong>
+            <span>Effets durables, entretien espac&eacute;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /section-apres -->
+
+
+<!-- CTA FINAL -->
+<div class="cta-final reveal" id="cta-final">
+  <div class="cta-box verre fort">
+    <span class="eyebrow" id="cta-eyebrow" style="text-align:center;display:block">Prochaine &eacute;tape</span>
+    <h2 id="cta-titre">Pr&ecirc;te &agrave; r&eacute;server<br><em>votre premi&egrave;re s&eacute;ance&nbsp;?</em></h2>
+    <p id="cta-sub">La s&eacute;ance Initiale dure 1h30. Elle comprend le bilan, le drainage complet et le d&eacute;briefing. Tout commence l&agrave;.</p>
+    <div class="cta-btns">
+      <a href="https://www.planity.com/floriane-cluzeau-31600-muret" class="btn" target="_blank" rel="noopener" id="cta-btn-main">R&eacute;server l&apos;Initiale &mdash; 160&nbsp;&euro;</a>
+      <a href="bilan.html" class="btn btn-sec" id="cta-btn-sec">Faire mon bilan d&apos;abord</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-brand">
+      <img src="data:image/png;base64,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" alt="Logo FC">
+      <span>Floriane <em>Cluzeau</em></span>
+    </div>
+    <ul class="footer-links" role="list">
+      <li><a href="methode.html">La M&eacute;thode</a></li>
+      <li><a href="soins.html">Les Soins</a></li>
+      <li><a href="bilan.html">Bilan</a></li>
+      <li><a href="seance.html">Votre S&eacute;ance</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 &middot; Floriane Cluzeau &middot; Muret (31600)</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   SWITCHER AVANT / APRÈS
+   ============================================================ */
+let modeActuel = 'avant';
+
+function basculer(mode) {
+  if(mode === modeActuel) return;
+  modeActuel = mode;
+
+  const body       = document.body;
+  const pill       = document.getElementById('switcher-pill');
+  const btnAvant   = document.getElementById('btn-avant');
+  const btnApres   = document.getElementById('btn-apres');
+  const secAvant   = document.getElementById('section-avant');
+  const secApres   = document.getElementById('section-apres');
+  const titre      = document.getElementById('hero-titre');
+  const sub        = document.getElementById('hero-sub');
+  const ctaTitre   = document.getElementById('cta-titre');
+  const ctaSub     = document.getElementById('cta-sub');
+  const ctaBtnMain = document.getElementById('cta-btn-main');
+  const ctaBtnSec  = document.getElementById('cta-btn-sec');
+  const ctaEyebrow = document.getElementById('cta-eyebrow');
+
+  if(mode === 'apres') {
+    // Pill → droite
+    pill.style.transform = `translateX(${btnAvant.offsetWidth}px)`;
+    pill.style.width = btnApres.offsetWidth + 'px';
+    btnAvant.classList.remove('actif');
+    btnApres.classList.add('actif');
+
+    // Mode visuel
+    body.classList.remove('mode-avant');
+    body.classList.add('mode-apres');
+
+    // Contenu hero
+    titre.innerHTML = 'Après votre<br><em>séance</em>';
+    sub.textContent = 'Ce que votre corps fait maintenant, comment l’aider, et ce à quoi vous pouvez vous attendre dans les heures qui suivent.';
+
+    // CTA
+    ctaEyebrow.textContent = 'La suite';
+    ctaTitre.innerHTML = 'Revenez<br><em>nous avons encore à faire</em>';
+    ctaSub.textContent = 'La prochaine séance consolide ce qui a été commencé aujourd’hui. Les effets s’accumulent — c’est ce qui fait la différence.';
+    ctaBtnMain.textContent = 'Réserver ma prochaine séance';
+    ctaBtnMain.href = 'https://www.planity.com/floriane-cluzeau-31600-muret';
+    ctaBtnSec.textContent = 'Voir les accompagnements';
+    ctaBtnSec.href = 'soins.html';
+
+    // Sections
+    secAvant.classList.add('hidden');
+    setTimeout(() => {
+      secApres.classList.remove('hidden');
+      // Re-trigger reveals
+      secApres.querySelectorAll('.reveal').forEach(el => {
+        el.classList.remove('vu');
+        setTimeout(() => el.classList.add('vu'), 50);
+      });
+    }, 300);
+
+  } else {
+    // Pill → gauche
+    pill.style.transform = 'translateX(0)';
+    pill.style.width = btnAvant.offsetWidth + 'px';
+    btnApres.classList.remove('actif');
+    btnAvant.classList.add('actif');
+
+    body.classList.remove('mode-apres');
+    body.classList.add('mode-avant');
+
+    titre.innerHTML = 'Avant votre<br><em>première séance</em>';
+    sub.textContent = 'Ce que vous devez savoir, ce que vous allez ressentir, et comment vous préparer pour en tirer le meilleur.';
+
+    ctaEyebrow.textContent = 'Prochaine étape';
+    ctaTitre.innerHTML = 'Prête à réserver<br><em>votre première séance ?</em>';
+    ctaSub.textContent = 'La séance Initiale dure 1h30. Elle comprend le bilan, le drainage complet et le débriefing. Tout commence là.';
+    ctaBtnMain.textContent = 'Réserver l’Initiale — 160 €';
+    ctaBtnMain.href = 'https://www.planity.com/floriane-cluzeau-31600-muret';
+    ctaBtnSec.textContent = 'Faire mon bilan d’abord';
+    ctaBtnSec.href = 'bilan.html';
+
+    secApres.classList.add('hidden');
+    setTimeout(() => {
+      secAvant.classList.remove('hidden');
+      secAvant.querySelectorAll('.reveal').forEach(el => el.classList.add('vu'));
+    }, 300);
+  }
+
+  // Scroll doux vers le contenu
+  setTimeout(() => {
+    secAvant.scrollIntoView ? null : null;
+    window.scrollTo({ top: 320, behavior: 'smooth' });
+  }, 400);
+}
+
+/* Init pill size */
+function initPill() {
+  const pill = document.getElementById('switcher-pill');
+  const btnAvant = document.getElementById('btn-avant');
+  pill.style.width = btnAvant.offsetWidth + 'px';
+  pill.style.transform = 'translateX(0)';
+}
+window.addEventListener('load', initPill);
+window.addEventListener('resize', initPill);
+
+/* ============================================================
+   HYDRATATION — VERRES ANIMÉS
+   ============================================================ */
+function buildHydraVerres() {
+  const wrap = document.getElementById('hydra-visuel');
+  if(!wrap) return;
+  const verres = [
+    { h: 60, pct: 100, label: 'Juste après' },
+    { h: 54, pct: 75,  label: '+1h' },
+    { h: 48, pct: 50,  label: '+2h' },
+    { h: 42, pct: 25,  label: '+4h' },
+  ];
+  wrap.innerHTML = '<div style="display:flex;gap:12px;align-items:flex-end">' +
+    verres.map((v,i) => `
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div class="hydra-verre" style="height:${v.h}px;width:36px">
+          <div class="hydra-eau" style="height:${v.pct}%;animation-delay:${i*0.4}s"></div>
+        </div>
+        <span class="hydra-label" style="font-size:9.5px">${v.label}</span>
+      </div>`
+    ).join('') + '</div>' +
+    '<p style="font-size:12px;color:var(--ardoise-cl);text-align:center;margin-top:10px;letter-spacing:.04em">Objectif : 1,5–2 L</p>';
+}
+buildHydraVerres();
+
+/* ============================================================
+   REVEAL SCROLL
+   ============================================================ */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) { e.target.classList.add('vu'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.06 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Activer les éléments déjà visibles au chargement
+setTimeout(() => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if(r.top < window.innerHeight) el.classList.add('vu');
+  });
+}, 120);
+
+/* URL deep-link : ?mode=apres */
+if(new URLSearchParams(window.location.search).get('mode') === 'apres') {
+  setTimeout(() => basculer('apres'), 200);
+}
+</script>
+</body>
+</html>

@@ -18,19 +18,38 @@
 {
   "@context": "https://schema.org",
   "@type": "HealthAndBeautyBusiness",
-  "name": "Floriane Cluzeau",
+  "name": "Floriane Cluzeau - Drainage Lymphatique",
+  "image": "https://florianecluzeau.fr/logo.png",
+  "@id": "https://florianecluzeau.fr",
   "url": "https://florianecluzeau.fr",
+  "telephone": "+33769853679",
+  "priceRange": "100€ - 160€",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "23 Av. du Président Vincent Auriol",
+    "streetAddress": "23 Avenue du Président Vincent Auriol",
     "addressLocality": "Muret",
     "postalCode": "31600",
     "addressCountry": "FR"
   },
-  "geo": { "@type": "GeoCoordinates", "latitude": 43.4686, "longitude": 1.3367 },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.4600,
+    "longitude": 1.3200
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.4600,
+      "longitude": 1.3200
+    },
+    "geoRadius": "30000"
+  },
   "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "9" },
-  "priceRange": "€€",
-  "description": "Praticienne certifiée en drainage lymphatique Méthode Nado® à Muret. Déplacements à domicile dans un rayon de 30km."
+  "description": "Praticienne certifiée en drainage lymphatique Méthode Nado® à Muret. Déplacements à domicile dans un rayon de 30km.",
+  "sameAs": [
+    "https://www.planity.com/floriane-cluzeau-31600-muret"
+  ]
 }
 </script>
 <style>
@@ -385,6 +404,7 @@ footer{
       <li><a href="methode.html">La Méthode</a></li>
       <li><a href="soins.html">Les Soins</a></li>
       <li><a href="bilan.html">Bilan</a></li>
+      <li><a href="seance.html">Votre Séance</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li class="cta-li"><a href="https://www.planity.com/floriane-cluzeau-31600-muret" class="btn nav-cta" target="_blank" rel="noopener">Réserver</a></li>
     </ul>
@@ -472,6 +492,18 @@ footer{
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEANCE CTA -->
+<section class="bilan-cta" id="votre-seance">
+  <div class="bilan-cta-card verre lisible reveal">
+    <span class="eyebrow">Curieuse du déroulé ?</span>
+    <h2>Avant, pendant, après <em>votre séance</em></h2>
+    <p>Ce que vous allez ressentir, comment vous préparer, et les bons réflexes une fois rentrée chez vous — tout est expliqué pas à pas.</p>
+    <div class="bilan-btns">
+      <a href="seance.html" class="btn sec">Découvrir le déroulé d'une séance</a>
     </div>
   </div>
 </section>
@@ -594,6 +626,7 @@ footer{
       <li><a href="methode.html">La Méthode</a></li>
       <li><a href="soins.html">Les Soins</a></li>
       <li><a href="bilan.html">Bilan</a></li>
+      <li><a href="seance.html">Votre Séance</a></li>
       <li><a href="faq.html">FAQ</a></li>
     </ul>
     <p class="footer-copy">© 2026 · Floriane Cluzeau · Muret (31600)</p>
@@ -613,42 +646,6 @@ document.querySelector('.hero-img img').addEventListener('load', function(){
 });
 if(document.querySelector('.hero-img img').complete){
   document.querySelector('.hero-img img').classList.add('loaded');
-}
-</script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HealthAndBeautyBusiness",
-  "name": "Floriane Cluzeau - Drainage Lymphatique",
-  "image": "https://florianecluzeau.fr/logo.png",
-  "@id": "https://florianecluzeau.fr",
-  "url": "https://florianecluzeau.fr",
-  "telephone": "",
-  "priceRange": "100€ - 160€",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "23 Avenue du Président Vincent Auriol",
-    "addressLocality": "Muret",
-    "postalCode": "31600",
-    "addressCountry": "FR"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 43.4600,
-    "longitude": 1.3200
-  },
-  "areaServed": {
-    "@type": "GeoCircle",
-    "geoMidpoint": {
-      "@type": "GeoCoordinates",
-      "latitude": 43.4600,
-      "longitude": 1.3200
-    },
-    "geoRadius": "30000"
-  },
-  "sameAs": [
-    "https://www.planity.com/floriane-cluzeau-31600-muret"
-  ]
 }
 </script>
 </body>
