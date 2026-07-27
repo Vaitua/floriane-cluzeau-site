@@ -424,3 +424,29 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .faq-reponse-inner p{font-size:15px;color:var(--encre-2);line-height:1.85;padding-bottom:20px;padding-right:8px}
 .faq-reponse-inner p:first-child{padding-top:0}
 .faq-reponse-inner a{color:var(--encre);text-decoration:underline;text-underline-offset:3px}
+
+/* ==========================================================================
+   PAGE CONTACT — formulaire + coordonnées, grille à deux colonnes
+   ========================================================================== */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:8px}
+.contact-form{display:flex;flex-direction:column;gap:20px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--encre-2)}
+.field input,.field textarea{
+  font-family:'Jost',sans-serif;font-size:15px;color:var(--encre);background:transparent;
+  border:1px solid rgba(169,130,79,.35);border-radius:2px;padding:13px 16px;
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--encre)}
+.field textarea{resize:vertical;min-height:140px;font-size:15px;line-height:1.6;font-family:'Jost',sans-serif}
+.contact-form .btn{align-self:flex-start;border:none;cursor:pointer}
+.contact-form .btn:disabled{opacity:.6;cursor:default}
+.form-status{font-size:13.5px;color:var(--encre-2);min-height:1.4em}
+.form-status.ok{color:var(--encre)}
+.contact-alt{padding:36px;border:1px solid rgba(169,130,79,.24);border-radius:4px;height:fit-content}
+.contact-alt h3{font-size:20px;margin-bottom:22px;font-family:'Cormorant Garamond',serif;font-weight:400;color:var(--encre)}
+.contact-alt-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
+.contact-alt-row:last-child{margin-bottom:0}
+.contact-alt-row svg{flex-shrink:0;margin-top:2px}
+.contact-alt-row p{font-size:14.5px;color:var(--encre-2);line-height:1.7}
+.contact-alt-row a{color:var(--encre);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:800px){.contact-layout{grid-template-columns:1fr;gap:40px}}
