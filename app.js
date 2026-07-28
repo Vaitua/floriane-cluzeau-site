@@ -104,7 +104,7 @@ avisDots.forEach((dot, i) => {
       ctaSub.textContent = "La prochaine séance consolide ce qui a été commencé aujourd'hui. Les effets s'accumulent.";
       ctaBtnMain.textContent = 'Réserver ma prochaine séance';
       ctaBtnSec.textContent = 'Voir les accompagnements';
-      ctaBtnSec.href = 'soins.html';
+      ctaBtnSec.href = 'soins';
 
       secAvant.classList.add('hidden');
       secApres.classList.remove('hidden');
@@ -122,7 +122,7 @@ avisDots.forEach((dot, i) => {
       ctaSub.textContent = 'La séance Initiale dure 1h30. Elle comprend le bilan, le drainage complet et le débriefing.';
       ctaBtnMain.textContent = "Réserver l'Initiale — 160 €";
       ctaBtnSec.textContent = 'Faire mon bilan d\'abord';
-      ctaBtnSec.href = 'bilan.html';
+      ctaBtnSec.href = 'bilan';
 
       secApres.classList.add('hidden');
       secAvant.classList.remove('hidden');
