@@ -56,6 +56,10 @@
   --encre:#23413D;
   --encre-2:#4A6B64;
   --or:#A9824F;
+  /* Or assombri, réservé au TEXTE. L'or ci-dessus (3,09:1 sur le fond crème)
+     convient aux filets, puces et bordures (seuil 3:1) mais pas au texte
+     courant, qui exige 4,5:1. Celui-ci est à 4,64:1. */
+  --or-texte:#8A6535;
   --rosee:#F0DCD3;
   --maxw:1200px;
   --measure:640px;
@@ -186,7 +190,7 @@ nav.is-scrolled{background:rgba(245,240,232,.94);backdrop-filter:blur(10px);-web
 .hero-sub{font-size:16px;line-height:1.85;color:var(--encre-2);max-width:420px;margin-bottom:36px}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
 .hero-credentials{font-size:12.5px;letter-spacing:.06em;color:var(--encre-2);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.hero-credentials .stars{color:var(--or);letter-spacing:2px}
+.hero-credentials .stars{color:var(--or-texte);letter-spacing:2px}
 .hero-credentials a{color:var(--encre);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(35,65,61,.35)}
 .hero-media{position:relative;overflow:hidden;background:var(--rosee)}
 .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 18%;transform:scale(1.04);opacity:0;transition:transform 1.1s var(--r),opacity .7s var(--r)}
@@ -274,7 +278,7 @@ nav.is-scrolled{background:rgba(245,240,232,.94);backdrop-filter:blur(10px);-web
   display:grid;grid-template-columns:44px 1fr auto;gap:24px;align-items:baseline;
   padding:32px 0;border-bottom:1px solid rgba(169,130,79,.28);
 }
-.menu-num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--or)}
+.menu-num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--or-texte)}
 .menu-info h3{font-size:23px;margin-bottom:8px}
 .menu-info p{font-size:14.5px;color:var(--encre-2);line-height:1.8;max-width:520px}
 .menu-price{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--encre-2);white-space:nowrap}
@@ -287,7 +291,7 @@ nav.is-scrolled{background:rgba(245,240,232,.94);backdrop-filter:blur(10px);-web
 /* AVIS — une citation à la fois, navigation manuelle (pas d'autoplay) */
 .avis{padding:0 0 140px;text-align:center}
 .avis-meta{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--encre-2);margin-bottom:48px}
-.avis-meta .stars{color:var(--or);letter-spacing:2px}
+.avis-meta .stars{color:var(--or-texte);letter-spacing:2px}
 .avis-rotator{min-height:160px;display:flex;align-items:center;justify-content:center}
 .avis-quote q{
   font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.4vw,36px);font-style:italic;
@@ -353,7 +357,7 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .soin-detail-item{display:flex;flex-direction:column;gap:5px}
 .soin-detail-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--encre-2)}
 .soin-detail-value{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--encre)}
-.soin-num{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--or);letter-spacing:.08em;margin-bottom:14px;display:block}
+.soin-num{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--or-texte);letter-spacing:.08em;margin-bottom:14px;display:block}
 
 /* Contre-indications — même langage de grille nette que .signals, icônes fonctionnelles */
 .ci-bloc{margin-top:56px}
@@ -391,7 +395,7 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .deroule-icon svg{width:20px;height:20px}
 .deroule-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:8px;flex-wrap:wrap}
 .deroule-head h3{font-size:20px}
-.deroule-duree{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--or);white-space:nowrap}
+.deroule-duree{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--or-texte);white-space:nowrap}
 .deroule-item p{font-size:14.5px;color:var(--encre-2);line-height:1.8;margin-bottom:10px}
 .deroule-tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--encre-2);opacity:.75}
 @media(max-width:640px){.deroule-item{grid-template-columns:1fr}.deroule-icon{margin-bottom:4px}}
@@ -428,7 +432,7 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .tempo-grid{display:grid;grid-template-columns:repeat(2,1fr);margin-top:48px;border-top:1px solid rgba(169,130,79,.24)}
 .tempo-item{padding:32px 30px;border-bottom:1px solid rgba(169,130,79,.24)}
 .tempo-item:nth-child(odd){border-right:1px solid rgba(169,130,79,.24)}
-.tempo-quand{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:10px}
+.tempo-quand{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--or-texte);display:block;margin-bottom:10px}
 .tempo-item h3{font-size:19px;margin-bottom:8px}
 .tempo-item p{font-size:14px;color:var(--encre-2);line-height:1.75;margin-bottom:12px}
 .tempo-badge{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--encre-2);opacity:.8}
@@ -457,7 +461,7 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .faq-item{border-bottom:1px solid rgba(169,130,79,.28)}
 .faq-question{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;background:none;border:0;padding:24px 2px;text-align:left;cursor:pointer;font-family:'Jost',sans-serif;font-size:16px;color:var(--encre);font-weight:400;transition:color .2s}
 .faq-question:hover{color:var(--encre-2)}
-.faq-chevron{flex-shrink:0;color:var(--or);font-size:13px;transition:transform .35s var(--r)}
+.faq-chevron{flex-shrink:0;color:var(--or-texte);font-size:13px;transition:transform .35s var(--r)}
 .faq-item.open .faq-chevron{transform:rotate(180deg)}
 .faq-reponse{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--r)}
 .faq-item.open .faq-reponse{grid-template-rows:1fr}

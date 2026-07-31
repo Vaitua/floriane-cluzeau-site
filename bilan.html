@@ -20,7 +20,7 @@
 
 :root{
   --fond:#F5F0E8;--encre:#23413D;--encre-2:#4A6B64;
-  --or:#A9824F;--or-clair:#C4976A;
+  --or:#A9824F;--or-clair:#C4976A;--or-texte:#8A6535;
   --rosee:#F0DCD3;
   --carte-bord:1px solid rgba(169,130,79,.26);
   --carte-ombre:0 2px 18px rgba(35,65,61,.06);
@@ -82,10 +82,10 @@ a{color:inherit}
 }
 .chip:hover,.chip.hovered{
   background:#FBF6EE;
-  border-color:var(--or-clair);
+  border-color:var(--or-texte);
   box-shadow:0 4px 14px rgba(169,130,79,.16);
 }
-.chip:hover .chip-label,.chip.hovered .chip-label{color:var(--or)}
+.chip:hover .chip-label,.chip.hovered .chip-label{color:var(--or-texte)}
 .chip.selected{
   background:var(--encre);
   border-color:var(--encre);
@@ -123,12 +123,12 @@ a{color:inherit}
 }
 .chip-mob .chip-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--encre);font-weight:400;font-family:'Jost',sans-serif}
 .chip-mob .chip-sub{font-size:9.5px;color:var(--encre-2);font-family:'Jost',sans-serif;font-weight:300}
-.chip-mob:hover{background:#FBF6EE;border-color:var(--or-clair)}
+.chip-mob:hover{background:#FBF6EE;border-color:var(--or-texte)}
 .chip-mob.selected{background:var(--encre);border-color:var(--encre)}
 .chip-mob.selected .chip-label,.chip-mob.selected .chip-sub{color:var(--fond)}
 .chip-mob.faded{opacity:.3;pointer-events:none}
 
-.canvas-hint{text-align:center;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--or-clair);margin-top:10px;position:relative;z-index:2;animation:pulse 2.5s ease-in-out infinite}
+.canvas-hint{text-align:center;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--or-texte);margin-top:10px;position:relative;z-index:2;animation:pulse 2.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:.2}50%{opacity:.8}}
 
 /* QUIZ */
@@ -136,14 +136,14 @@ a{color:inherit}
 .progress-zone{max-width:560px;margin:0 auto 36px;padding:0 4px}
 .progress-track{height:1.5px;background:rgba(169,130,79,.18);border-radius:2px;overflow:hidden;margin-bottom:8px}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--encre),var(--or));border-radius:2px;transition:width .55s cubic-bezier(.4,0,.2,1);width:25%}
-.progress-lbl{font-size:11px;color:var(--or-clair);letter-spacing:.07em;text-align:right}
+.progress-lbl{font-size:11px;color:var(--or-texte);letter-spacing:.07em;text-align:right}
 .q-card{padding:36px 36px 30px;margin-bottom:16px}
-.q-num{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--or);font-weight:400;margin-bottom:12px;display:block}
+.q-num{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--or-texte);font-weight:400;margin-bottom:12px;display:block}
 .q-texte{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,25px);font-weight:300;line-height:1.38}
 .q-texte em{font-style:italic}
 .opts{display:flex;flex-direction:column;gap:9px;margin-top:24px}
 .opt{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:transparent;border:1px solid rgba(169,130,79,.28);border-radius:8px;cursor:pointer;transition:background .25s,border-color .25s,transform .2s;text-align:left;width:100%;font-family:'Jost',sans-serif}
-.opt:hover{background:rgba(169,130,79,.06);border-color:var(--or-clair);transform:translateX(3px)}
+.opt:hover{background:rgba(169,130,79,.06);border-color:var(--or-texte);transform:translateX(3px)}
 .opt.sel{background:rgba(35,65,61,.06);border-color:var(--encre)}
 .opt-dot{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(169,130,79,.4);flex-shrink:0;margin-top:3px;transition:all .25s;display:flex;align-items:center;justify-content:center}
 .opt.sel .opt-dot{background:var(--encre);border-color:var(--encre)}
@@ -165,9 +165,9 @@ a{color:inherit}
 #result{display:none;position:relative;z-index:2;padding-bottom:100px}
 #result.vis{display:block}
 .result-hero{text-align:center;padding:108px 0 40px}
-.result-tag{display:inline-block;padding:5px 20px;border-radius:100px;background:rgba(169,130,79,.1);border:1px solid rgba(169,130,79,.3);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or);margin-bottom:20px}
+.result-tag{display:inline-block;padding:5px 20px;border-radius:100px;background:rgba(169,130,79,.1);border:1px solid rgba(169,130,79,.3);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or-texte);margin-bottom:20px}
 .result-titre{font-size:clamp(32px,5vw,58px);margin-bottom:20px}
-.result-titre em{font-style:italic;color:var(--or-clair)}
+.result-titre em{font-style:italic;color:var(--or-texte)}
 .result-intro{font-size:16px;color:var(--encre-2);max-width:520px;margin:0 auto 40px;line-height:1.8}
 .soin-card{padding:40px;margin-bottom:20px}
 .soin-card h3{font-size:clamp(22px,3vw,30px);margin-bottom:16px}
@@ -429,7 +429,7 @@ a{color:inherit}
       <input type="email" id="email-input" placeholder="votre@email.fr" style="display:block;width:100%;max-width:360px;margin:0 auto 14px;padding:14px 20px;border-radius:100px;border:1.5px solid rgba(169,130,79,.3);background:rgba(255,255,255,.7);font-family:'Jost',sans-serif;font-size:15px;color:var(--encre);outline:none;text-align:center;">
       <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
         <button class="btn" onclick="soumettreEmail()">Recevoir mon bilan par email</button>
-        <button onclick="afficherResultat()" style="background:none;border:none;cursor:pointer;font-size:13px;color:var(--or-clair);text-decoration:underline;font-family:'Jost',sans-serif;padding:4px 0;">Voir mon profil directement &#8594;</button>
+        <button onclick="afficherResultat()" style="background:none;border:none;cursor:pointer;font-size:13px;color:var(--or-texte);text-decoration:underline;font-family:'Jost',sans-serif;padding:4px 0;">Voir mon profil directement &#8594;</button>
       </div>
     </div>
   </div>
@@ -439,7 +439,7 @@ a{color:inherit}
 <div id="result" style="display:none">
   <div class="result-hero" style="text-align:center;padding:108px 0 40px">
     <div class="wrap">
-      <span class="result-tag reveal" id="result-tag" style="display:inline-block;padding:5px 20px;border-radius:100px;background:rgba(169,130,79,.1);border:1px solid rgba(169,130,79,.3);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or);margin-bottom:20px"></span>
+      <span class="result-tag reveal" id="result-tag" style="display:inline-block;padding:5px 20px;border-radius:100px;background:rgba(169,130,79,.1);border:1px solid rgba(169,130,79,.3);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or-texte);margin-bottom:20px"></span>
       <h2 class="result-titre reveal" id="result-titre" style="font-size:clamp(26px,4.5vw,50px);margin-bottom:20px"></h2>
       <p class="result-intro reveal" id="result-intro" style="font-size:16px;color:var(--encre-2);max-width:560px;margin:0 auto;line-height:1.9"></p>
       <div id="result-illo" style="margin-top:24px"></div>
@@ -457,7 +457,7 @@ a{color:inherit}
       <div style="height:1px;background:rgba(169,130,79,.15);margin:22px 0"></div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
         <div style="width:7px;height:7px;border-radius:50%;background:var(--or)"></div>
-        <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--or)">Ce que dit la science</span>
+        <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--or-texte)">Ce que dit la science</span>
       </div>
       <div id="science-texte" style="font-size:14px;color:var(--encre-2);font-style:italic;line-height:1.8"></div>
     </div>
@@ -470,10 +470,10 @@ a{color:inherit}
       <p style="font-size:14px;color:var(--encre-2);line-height:1.75"><strong style="color:var(--encre);font-weight:500">L'Initiale</strong> — Chaque première séance fait l'objet d'un bilan approfondi pour affiner et cibler le mieux possible votre accompagnement. Ce profil est une première orientation, pas une prescription.</p>
     </div>
     <div class="verre lisible reveal" style="padding:40px;text-align:center">
-      <h2 style="font-size:clamp(26px,4vw,42px);margin-bottom:16px">Prête &#224; commencer ?<br><span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--or-clair)">R&#233;servez l'Initiale</span></h2>
+      <h2 style="font-size:clamp(26px,4vw,42px);margin-bottom:16px">Prête &#224; commencer ?<br><span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--or-texte)">R&#233;servez l'Initiale</span></h2>
       <p style="color:var(--encre-2);margin-bottom:28px;font-size:15px">La premi&#232;re s&#233;ance est un bilan complet, con&#231;u pour construire un protocole vraiment sur mesure pour votre corps.</p>
       <a href="https://www.planity.com/floriane-cluzeau-31600-muret" class="btn" target="_blank" rel="noopener" style="display:inline-block;margin-bottom:16px">R&#233;server ma s&#233;ance Initiale &#8212; 160&#160;&#8364;</a>
-      <p style="font-size:13px;color:var(--or-clair)">Muret (31600) &#183; En cabinet ou &#224; domicile &#183; Sur Planity</p>
+      <p style="font-size:13px;color:var(--or-texte)">Muret (31600) &#183; En cabinet ou &#224; domicile &#183; Sur Planity</p>
       <div style="margin-top:20px"><button class="btn bulle" onclick="recommencer()">Recommencer le bilan</button></div>
     </div>
   </div>
