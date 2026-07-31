@@ -42,4 +42,14 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://florianecluzeau.fr/mentions-legales</loc>
+    <lastmod>2026-07-31</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://florianecluzeau.fr/politique-confidentialite</loc>
+    <lastmod>2026-07-31</lastmod>
+    <priority>0.2</priority>
+  </url>
 </urlset>

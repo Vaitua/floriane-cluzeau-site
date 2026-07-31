@@ -1,0 +1,11 @@
+# En-têtes HTTP servis par Cloudflare Pages.
+# Ce fichier n'est pas une page : il n'apparaît nulle part sur le site.
+
+# Les polices ne changent jamais. Le navigateur les garde un an
+# et ne les redemande plus — les pages suivantes s'affichent instantanément.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Les images sont versionnées par leur nom (hero-1280.webp, etc.)
+/assets/img/*
+  Cache-Control: public, max-age=31536000, immutable

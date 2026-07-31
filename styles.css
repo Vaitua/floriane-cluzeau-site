@@ -1,3 +1,44 @@
+/* ==========================================================================
+   POLICES — servies depuis ce site, jamais depuis un serveur tiers.
+   Aucune adresse IP de visiteuse n'est transmise à Google.
+   Sous-ensemble « latin » : couvre l'intégralité du français, œ et Œ compris.
+   font-display:swap — le texte s'affiche immédiatement dans une police système
+   puis bascule, plutôt que de rester invisible le temps du chargement.
+   ========================================================================== */
+
+@font-face{
+  font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;
+  src:url('assets/fonts/cormorant-garamond-300-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/cormorant-garamond-400-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;
+  src:url('assets/fonts/cormorant-garamond-500-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;
+  src:url('assets/fonts/cormorant-garamond-300-italic.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;
+  src:url('assets/fonts/cormorant-garamond-400-italic.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Jost';font-style:normal;font-weight:300;font-display:swap;
+  src:url('assets/fonts/jost-300-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Jost';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/jost-400-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Jost';font-style:normal;font-weight:500;font-display:swap;
+  src:url('assets/fonts/jost-500-normal.woff2') format('woff2');
+}
+
 /* Floriane Cluzeau — feuille de style partagée (toutes pages)
    Voir index.html pour le commentaire de concept complet. */
 
@@ -450,3 +491,89 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .contact-alt-row p{font-size:14.5px;color:var(--encre-2);line-height:1.7}
 .contact-alt-row a{color:var(--encre);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:800px){.contact-layout{grid-template-columns:1fr;gap:40px}}
+
+/* ==========================================================================
+   PAGES LÉGALES — mentions légales, politique de confidentialité
+   Texte long, lu rarement mais devant rester parfaitement lisible.
+   Mesure resserrée, hiérarchie sobre, aucun ornement.
+   ========================================================================== */
+
+.legal{padding:20px 0 90px}
+.legal-intro{font-size:15px;color:var(--encre-2);margin-bottom:44px;padding-bottom:26px;
+  border-bottom:1px solid rgba(169,130,79,.22)}
+
+.legal h2{
+  font-size:26px;font-weight:300;margin:52px 0 16px;
+  padding-top:26px;border-top:1px solid rgba(169,130,79,.16);
+}
+.legal h2:first-of-type{margin-top:0;padding-top:0;border-top:none}
+.legal h3{font-size:19px;font-weight:400;margin:30px 0 10px}
+.legal p{margin-bottom:14px;font-size:15.5px}
+.legal ul{margin:0 0 18px 0;padding-left:0}
+.legal ul li{position:relative;padding-left:20px;margin-bottom:9px;font-size:15.5px}
+.legal ul li::before{content:"—";position:absolute;left:0;color:var(--or)}
+.legal a{color:var(--encre);text-decoration:underline;text-underline-offset:3px}
+.legal a:hover{color:var(--encre-2)}
+.legal strong{font-weight:500;color:var(--encre)}
+
+/* Bloc identité : les informations réglementaires, lisibles d'un coup d'œil */
+.legal-id{
+  list-style:none;margin:0 0 20px;padding:26px 30px;
+  border:1px solid rgba(169,130,79,.24);border-radius:4px;background:#FFFDF9;
+}
+.legal-id div{display:flex;flex-wrap:wrap;gap:6px 18px;padding:11px 0;
+  border-bottom:1px solid rgba(169,130,79,.14)}
+.legal-id div:last-child{border-bottom:none;padding-bottom:0}
+.legal-id div:first-child{padding-top:0}
+.legal-id dt{flex:0 0 190px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--encre-2);padding-top:3px}
+.legal-id dd{flex:1;min-width:220px;font-size:15.5px;color:var(--encre)}
+
+/* Tableau des traitements de données */
+.legal-table{width:100%;border-collapse:collapse;margin-bottom:22px;font-size:14.5px}
+.legal-table th{
+  text-align:left;padding:12px 14px;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--encre-2);font-weight:400;
+  border-bottom:1px solid rgba(169,130,79,.3);
+}
+.legal-table td{padding:14px;border-bottom:1px solid rgba(169,130,79,.14);vertical-align:top}
+.legal-table tr:last-child td{border-bottom:none}
+@media(max-width:720px){
+  .legal-table,.legal-table tbody,.legal-table tr,.legal-table td{display:block;width:100%}
+  .legal-table thead{display:none}
+  .legal-table tr{padding:16px 0;border-bottom:1px solid rgba(169,130,79,.2)}
+  .legal-table td{padding:4px 0;border:none}
+  .legal-table td::before{content:attr(data-l);display:block;font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--encre-2);margin-bottom:3px}
+}
+
+/* Encart d'attention — utilisé avec parcimonie */
+.legal-note{
+  padding:20px 24px;margin:24px 0;border-left:2px solid var(--or);
+  background:rgba(240,220,211,.28);font-size:14.5px;color:var(--encre-2);
+}
+.legal-note p:last-child{margin-bottom:0}
+
+.legal-maj{margin-top:52px;padding-top:22px;border-top:1px solid rgba(169,130,79,.22);
+  font-size:13px;color:var(--encre-2)}
+
+/* Liens légaux en pied de page — discrets, présents partout */
+.footer-legal{
+  border-top:1px solid rgba(169,130,79,.16);margin-top:30px;padding-top:20px;
+  display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;
+}
+.footer-legal a{font-size:11.5px;color:var(--encre-2);text-decoration:none;
+  letter-spacing:.04em;transition:color .2s}
+.footer-legal a:hover{color:var(--encre);text-decoration:underline;text-underline-offset:3px}
+
+/* Case de consentement du formulaire de contact */
+.field-consent{flex-direction:row;align-items:flex-start;gap:12px}
+.field-consent input[type=checkbox]{
+  flex-shrink:0;width:17px;height:17px;margin-top:3px;
+  accent-color:var(--encre);cursor:pointer;
+}
+.field-consent label{
+  font-size:13.5px;line-height:1.6;letter-spacing:0;text-transform:none;
+  color:var(--encre-2);cursor:pointer;
+}
+.field-consent label a{color:var(--encre);text-decoration:underline;text-underline-offset:3px}

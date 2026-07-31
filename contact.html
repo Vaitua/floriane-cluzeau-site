@@ -13,9 +13,8 @@
 <meta property="og:description" content="Une question avant de réserver ? Écrivez-moi directement.">
 <meta property="og:url" content="https://florianecluzeau.fr/contact">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-300-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-300-normal.woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -84,6 +83,17 @@
           <label for="c-message">Message</label>
           <textarea id="c-message" name="message" required placeholder="Votre question, en quelques mots..."></textarea>
         </div>
+        <div class="field field-consent">
+          <input type="checkbox" id="c-consent" name="consentement" required>
+          <label for="c-consent">J'accepte que mon nom, mon email et mon message soient utilisés pour me répondre. Ils sont conservés 12 mois et ne sont transmis à personne d'autre. <a href="politique-confidentialite">En savoir plus</a>.</label>
+        </div>
+
+        <!-- Champ anti-robot : invisible et non focusable pour une visiteuse, rempli par les robots -->
+        <div class="field" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">
+          <label for="c-site">Ne pas remplir ce champ</label>
+          <input type="text" id="c-site" name="site" tabindex="-1" autocomplete="off">
+        </div>
+
         <button type="submit" class="btn" id="contact-submit">Envoyer mon message</button>
         <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
       </form>
@@ -136,6 +146,12 @@
       <span>© 2026 · Floriane Cluzeau · Muret (31600)</span>
     </div>
   </div>
+  <div class="wrap">
+    <div class="footer-legal">
+      <a href="mentions-legales">Mentions légales</a>
+      <a href="politique-confidentialite">Politique de confidentialité</a>
+    </div>
+  </div>
 </footer>
 
 <div class="sticky-cta" role="region" aria-label="Actions rapides">
@@ -158,6 +174,15 @@
 
     form.addEventListener('submit', function(e){
       e.preventDefault();
+
+      // Anti-robot : un humain ne peut pas voir ce champ, donc il reste vide.
+      // S'il est rempli, on fait semblant d'avoir envoyé et on s'arrête là.
+      if(document.getElementById('c-site').value !== ''){
+        status.textContent = 'Message envoyé — je vous réponds sous 24 à 48h.';
+        status.className = 'form-status ok';
+        form.reset();
+        return;
+      }
 
       if(EMAILJS_CONTACT_TEMPLATE_ID === 'TEMPLATE_ID_A_CREER'){
         const nom = document.getElementById('c-nom').value;
