@@ -135,6 +135,77 @@ avisDots.forEach((dot, i) => {
   btnApres.addEventListener('click', () => basculer('apres'));
 })();
 
+// Bandeau vidéo de l'accueil : lecture automatique muette dès que le bandeau
+// entre dans l'écran (jamais avant), coupée dès qu'on le quitte. Le texte
+// s'efface une fois la vidéo bien lancée pour ne laisser que le geste.
+// Repli si mouvement réduit demandé ou connexion en économie de données :
+// image fixe, texte permanent, un clic lance la vidéo avec le son.
+(function(){
+  const frame = document.querySelector('.video-frame');
+  if(!frame) return;
+  const video = frame.querySelector('video');
+  const soundBtn = frame.querySelector('.video-sound');
+  const pauseBtn = frame.querySelector('.video-pause');
+
+  const reduitMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const economieDonnees = !!(navigator.connection && navigator.connection.saveData);
+
+  function lectureManuelle(){
+    video.muted = false;
+    video.controls = true;
+    video.play().catch(() => {});
+  }
+
+  if(reduitMotion || economieDonnees){
+    frame.style.cursor = 'pointer';
+    frame.addEventListener('click', lectureManuelle, {once:true});
+    return;
+  }
+
+  let lancee = false;
+  let pauseVoulue = false; // respecte le choix de la visiteuse : on ne relance pas par-dessus
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting && !pauseVoulue){
+        video.play().then(() => {
+          if(!lancee){
+            lancee = true;
+            setTimeout(() => frame.classList.add('efface'), 3600);
+            soundBtn.hidden = false;
+            pauseBtn.hidden = false;
+          }
+        }).catch(() => {
+          frame.style.cursor = 'pointer';
+          frame.addEventListener('click', lectureManuelle, {once:true});
+        });
+      } else if(!entry.isIntersecting){
+        video.pause();
+      }
+    });
+  }, {threshold: .35});
+  io.observe(frame);
+
+  soundBtn.addEventListener('click', () => {
+    video.muted = !video.muted;
+    soundBtn.setAttribute('aria-pressed', String(!video.muted));
+    soundBtn.setAttribute('aria-label', video.muted ? 'Activer le son' : 'Couper le son');
+  });
+
+  // Pause/lecture — exigé par WCAG 2.2.2 pour tout contenu qui bouge seul plus de 5s.
+  pauseBtn.addEventListener('click', () => {
+    if(video.paused){
+      pauseVoulue = false;
+      video.play().catch(() => {});
+    } else {
+      pauseVoulue = true;
+      video.pause();
+    }
+    pauseBtn.setAttribute('aria-pressed', String(video.paused));
+    pauseBtn.setAttribute('aria-label', video.paused ? 'Reprendre la vidéo' : 'Mettre en pause');
+  });
+})();
+
 // Parallaxe des grandes photos (hero + sections bleed) — inerte si la page n'en a pas.
 // Désactivé sous 900px (mobile) et si la visiteuse a demandé moins de mouvement.
 (function(){

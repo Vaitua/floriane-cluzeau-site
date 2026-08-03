@@ -228,6 +228,58 @@ nav.is-scrolled{background:rgba(245,240,232,.94);backdrop-filter:blur(10px);-web
   .trust-item + .trust-item{border-top:1px solid rgba(245,240,232,.18);padding-top:28px}
 }
 
+/* VIDÉO DE PRÉSENTATION — bandeau plein écran. Lecture automatique muette dès
+   que le bandeau entre dans l'écran (jamais avant, jamais hors champ) ; le
+   texte s'efface une fois la vidéo bien lancée pour ne laisser que le geste.
+   Repli : réduction de mouvement / économie de données → image fixe, un clic
+   suffit à lancer la vidéo avec le son, texte permanent. */
+.video-presentation{margin:64px 0}
+.video-frame{
+  position:relative;overflow:hidden;background:var(--encre);
+  width:100%;height:82vh;min-height:460px;max-height:760px;
+}
+.video-frame video{width:100%;height:100%;object-fit:cover;display:block}
+
+.video-overlay{
+  position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:0 var(--pad);
+  background:linear-gradient(180deg,rgba(35,65,61,.4),rgba(35,65,61,.08) 45%,rgba(35,65,61,.42));
+  transition:opacity 2.2s var(--r);
+}
+.video-overlay .eyebrow{justify-content:center;color:var(--fond)}
+.video-overlay .eyebrow::before{background:var(--rosee)}
+.video-overlay h2{color:var(--fond);font-size:clamp(32px,5vw,56px)}
+.video-overlay h2 em{color:var(--rosee)}
+.video-overlay p{color:rgba(245,240,232,.88);max-width:520px;margin:14px auto 0;font-size:15.5px;line-height:1.8}
+.video-frame.efface .video-overlay{opacity:0;pointer-events:none}
+
+.video-sound,.video-pause{
+  position:absolute;z-index:2;bottom:26px;
+  width:44px;height:44px;border-radius:50%;border:1px solid rgba(245,240,232,.5);
+  background:rgba(35,65,61,.45);color:var(--fond);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:background .25s var(--r),transform .2s var(--r);
+}
+.video-sound:hover,.video-pause:hover{background:rgba(35,65,61,.7);transform:scale(1.06)}
+.video-sound svg,.video-pause svg{width:18px;height:18px}
+.video-sound{right:26px}
+.video-pause{right:82px}
+.video-sound .icon-actif,.video-pause .icon-lecture{display:none}
+.video-sound[aria-pressed="true"] .icon-muet{display:none}
+.video-sound[aria-pressed="true"] .icon-actif{display:block}
+.video-pause[aria-pressed="true"] .icon-pause{display:none}
+.video-pause[aria-pressed="true"] .icon-lecture{display:block}
+@media(max-width:640px){
+  .video-sound{right:20px}
+  .video-pause{right:74px}
+}
+
+@media(max-width:640px){
+  .video-presentation{margin:40px 0}
+  .video-frame{height:64vh;min-height:380px}
+  .video-overlay p{display:none}
+}
+
 /* SUIVI — contenu unique : preuve du protocole mesuré, pas de la mise en scène */
 .suivi{padding:130px 0 110px}
 .suivi-intro{text-align:center;color:var(--encre-2);font-size:16px;line-height:1.85;max-width:560px;margin:0 auto 60px}

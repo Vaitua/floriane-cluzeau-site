@@ -1,0 +1,4 @@
+# Fichier source brut de la vidéo (122 Mo) — jamais dans le dépôt.
+# Cloudflare Pages refuse tout fichier de plus de 25 Mo ; la version
+# compressée pour le site vit dans assets/video/presentation.mp4.
+assets/Vidéo/
