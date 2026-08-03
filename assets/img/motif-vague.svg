@@ -1,0 +1,6 @@
+<!-- Motif "vague douce" — adapté depuis la bibliothèque Ressources/secteurs/bien-etre-sante,
+     recoloré avec l'or du site (--or #A9824F) au lieu de la sauge du mood-board d'origine.
+     Utilisé en fond tuilé (background-repeat:repeat-x), jamais comme élément de texte. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" width="200" height="40">
+  <path d="M0 20 C 50 5, 150 35, 200 20" fill="none" stroke="#A9824F" stroke-width="1.5" stroke-opacity="0.35" stroke-linecap="round"/>
+</svg>
