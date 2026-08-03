@@ -135,6 +135,66 @@ avisDots.forEach((dot, i) => {
   btnApres.addEventListener('click', () => basculer('apres'));
 })();
 
+// Parallaxe des grandes photos (hero + sections bleed) — inerte si la page n'en a pas.
+// Désactivé sous 900px (mobile) et si la visiteuse a demandé moins de mouvement.
+(function(){
+  const images = Array.from(document.querySelectorAll('.hero-media img, .bleed-media img'));
+  if(!images.length) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const ECHELLE = 1.12; // marge donnée par la mise à l'échelle pour ne jamais découvrir les bords
+  const AMPLITUDE = 0.05; // translation max = 5% de la hauteur du conteneur, de chaque côté
+
+  const couches = images.map(img => ({ img, conteneur: img.parentElement, actuel: 0, cible: 0, actif: false }));
+  let rafId = null;
+  let actif = window.matchMedia('(min-width:901px)').matches;
+
+  function mesurer(){
+    const vh = window.innerHeight;
+    couches.forEach(c => {
+      if(!c.actif) return;
+      const rect = c.conteneur.getBoundingClientRect();
+      const centreConteneur = rect.top + rect.height / 2;
+      const decalage = (centreConteneur - vh / 2) / vh; // ~ -0.5 à 0.5 selon la position à l'écran
+      c.cible = decalage * rect.height * AMPLITUDE;
+    });
+  }
+
+  function boucle(){
+    mesurer();
+    let enMouvement = false;
+    couches.forEach(c => {
+      const delta = c.cible - c.actuel;
+      if(Math.abs(delta) > 0.05){ c.actuel += delta * 0.08; enMouvement = true; }
+      else { c.actuel = c.cible; }
+      c.img.style.transform = `translate3d(0, ${c.actuel.toFixed(2)}px, 0) scale(${ECHELLE})`;
+    });
+    rafId = (enMouvement || couches.some(c => c.actif)) ? requestAnimationFrame(boucle) : null;
+  }
+
+  function demarrer(){
+    if(!rafId) rafId = requestAnimationFrame(boucle);
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const c = couches.find(c => c.conteneur === entry.target);
+      if(c) c.actif = actif && entry.isIntersecting;
+    });
+    demarrer();
+  }, { rootMargin: '25% 0px 25% 0px' });
+  couches.forEach(c => io.observe(c.conteneur));
+
+  window.addEventListener('scroll', demarrer, { passive: true });
+  window.addEventListener('resize', () => {
+    actif = window.matchMedia('(min-width:901px)').matches;
+    if(!actif){
+      couches.forEach(c => { c.img.style.transform = `scale(${ECHELLE})`; c.actuel = 0; c.cible = 0; });
+    }
+    demarrer();
+  }, { passive: true });
+})();
+
 // Page FAQ : accordéon + filtre par catégorie (inerte si absent de la page)
 (function(){
   const items = document.querySelectorAll('.faq-item');
