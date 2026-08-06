@@ -1,0 +1,15 @@
+# Anciennes adresses en .html — la version publiée depuis fin juillet 2026
+# utilise des adresses propres (/soins, /bilan...). Cloudflare Pages sert le
+# même contenu aux deux formats depuis le début, donc Google avait indexé
+# les deux versions de chaque page. Ces redirections 301 forcent une seule
+# adresse par page et transmettent tout le référencement déjà acquis par la
+# version .html vers la version propre.
+/index.html                    /                              301
+/bilan.html                    /bilan                         301
+/soins.html                    /soins                         301
+/methode.html                  /methode                       301
+/seance.html                   /seance                        301
+/contact.html                  /contact                       301
+/faq.html                      /faq                           301
+/mentions-legales.html         /mentions-legales              301
+/politique-confidentialite.html /politique-confidentialite    301
