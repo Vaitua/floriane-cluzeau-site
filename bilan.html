@@ -1106,7 +1106,17 @@ let dernierEmailSaisi = ''; // vide si la cliente a choisi "voir mon profil dire
 // directement", ce qui est le cas le plus fréquent d'un bilan.
 function notifierFloriane(p, a){
   const fd=new FormData();
-  fd.append('email', dernierEmailSaisi || '(non renseigné — a choisi de voir son profil directement)');
+  // Formspree traite le champ nommé "email" de façon spéciale (reply-to +
+  // filtre anti-spam) : si sa valeur n'est pas une adresse email valide,
+  // la soumission est filtrée en silence et n'apparaît jamais dans le
+  // tableau de bord. On utilise donc un nom de champ différent quand la
+  // cliente n'a pas laissé d'adresse, pour ne jamais y mettre autre chose
+  // qu'un vrai email ou rien du tout.
+  if(dernierEmailSaisi){
+    fd.append('email', dernierEmailSaisi);
+  } else {
+    fd.append('Email cliente', 'Non renseigné — a choisi "voir mon profil directement"');
+  }
   fd.append('Zone',rep[0]||'');
   fd.append('Profil',p.tag);
   fd.append('Type',a.type);
