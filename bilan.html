@@ -1097,23 +1097,36 @@ function envoyerBilanParEmail(email, p, a){
   });
 }
 
+let dernierEmailSaisi = ''; // vide si la cliente a choisi "voir mon profil directement"
+
+// Notifie Floriane à CHAQUE bilan terminé, que la cliente ait laissé son
+// email ou non — avant ce correctif, seule la cliente était prévenue (et
+// uniquement si elle acceptait de laisser son adresse) : Floriane, elle,
+// ne recevait jamais rien quand quelqu'un cliquait "Voir mon profil
+// directement", ce qui est le cas le plus fréquent d'un bilan.
+function notifierFloriane(p, a){
+  const fd=new FormData();
+  fd.append('email', dernierEmailSaisi || '(non renseigné — a choisi de voir son profil directement)');
+  fd.append('Zone',rep[0]||'');
+  fd.append('Profil',p.tag);
+  fd.append('Type',a.type);
+  fd.append('Score D/R',`D:${a.d} / R:${a.r}`);
+  fd.append('Etiologie',a.etio);
+  fd.append('Intensite',a.intensite);
+  fd.append('Q1',rep[1]||'');fd.append('Q2',rep[2]||'');fd.append('Q3',rep[3]||'');
+  fd.append('Q4',rep[4]||'');fd.append('Q5',rep[5]||'');fd.append('Q6',rep[6]||'');
+  fd.append('Soin recommandé',p.soin);
+  fetch('https://formspree.io/f/meebvkzb',{method:'POST',body:fd}).catch(()=>{
+    console.error('Formspree: notification à Floriane a échoué');
+  });
+}
+
 function soumettreEmail(){
   const email=document.getElementById('email-input').value.trim();
   if(email&&email.includes('@')){
+    dernierEmailSaisi = email;
     const p=getProfil();
     const a=analyserProfil();
-    const fd=new FormData();
-    fd.append('email',email);
-    fd.append('Zone',rep[0]||'');
-    fd.append('Profil',p.tag);
-    fd.append('Type',a.type);
-    fd.append('Score D/R',`D:${a.d} / R:${a.r}`);
-    fd.append('Etiologie',a.etio);
-    fd.append('Intensite',a.intensite);
-    fd.append('Q1',rep[1]||'');fd.append('Q2',rep[2]||'');fd.append('Q3',rep[3]||'');
-    fd.append('Q4',rep[4]||'');fd.append('Q5',rep[5]||'');fd.append('Q6',rep[6]||'');
-    fd.append('Soin recommandé',p.soin);
-    fetch('https://formspree.io/f/meebvkzb',{method:'POST',body:fd}).catch(()=>{});
     envoyerBilanParEmail(email, p, a);
   }
   afficherResultat();
@@ -1128,6 +1141,7 @@ function afficherResultat(){
   document.getElementById('canvas-hint').style.display='none';
 
   const p=getProfil();
+  notifierFloriane(p, analyserProfil());
   document.getElementById('result-tag').textContent=p.tag;
   document.getElementById('result-titre').innerHTML=p.titre;
   document.getElementById('result-intro').textContent=p.intro;
