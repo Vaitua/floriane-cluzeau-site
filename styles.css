@@ -65,6 +65,13 @@
   --measure:640px;
   --pad:clamp(20px,5vw,64px);
   --r:cubic-bezier(.4,0,.2,1);
+  /* Liquid Glass — réservé à la couche de contrôle flottante (nav, boutons
+     du hero, icône Instagram du pied de page). Jamais sur du contenu. */
+  --lqg-blur:10px;
+  --lqg-sat:2.6;
+  --lqg-light-bg:rgba(255,253,248,.5);
+  --lqg-dark-bg:rgba(24,42,38,.72);
+  --lqg-shadow:rgba(12,20,18,.4);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -119,17 +126,59 @@ ul{list-style:none}
 }
 .text-link:hover{border-color:var(--encre);gap:12px}
 
-/* BOUTONS — plats, sans dégradé ni pilule. Contraste ≥ 9:1 (encre/fond) */
+/* BOUTONS — capsule en Liquid Glass, partout sur le site (nav, hero,
+   soins, contact, bilan, FAQ, pied de page…) : un seul et même contrôle,
+   pour rester cohérent d'une page à l'autre. Contraste vérifié ≥ 4,5:1. */
 .btn{
+  position:relative;isolation:isolate;
   display:inline-flex;align-items:center;justify-content:center;text-decoration:none;
   padding:16px 34px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
-  background:var(--encre);color:var(--fond);border:1px solid var(--encre);border-radius:2px;
-  transition:background .25s var(--r),color .25s var(--r),transform .25s var(--r);
+  border:none;border-radius:999px;color:var(--fond);
+  background:var(--lqg-dark-bg);
+  -webkit-backdrop-filter:blur(var(--lqg-blur)) saturate(var(--lqg-sat));
+  backdrop-filter:blur(var(--lqg-blur)) saturate(var(--lqg-sat));
+  box-shadow:
+    0 1.5px 0 rgba(255,255,255,.8) inset,
+    0 -6px 14px rgba(255,255,255,.14) inset,
+    0 -1.5px 5px rgba(15,25,23,.16) inset,
+    0 8px 16px -10px var(--lqg-shadow),
+    0 26px 46px -20px var(--lqg-shadow);
+  transition:background .4s var(--r),box-shadow .4s var(--r),transform .25s var(--r);
+  cursor:pointer;font-family:inherit;
 }
-.btn:hover{background:var(--encre-2);border-color:var(--encre-2);transform:translateY(-1px)}
-.btn.ghost{background:transparent;color:var(--encre);border:1px solid rgba(35,65,61,.35)}
-.btn.ghost:hover{border-color:var(--encre);background:transparent}
+.btn::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1.75px;
+  background:linear-gradient(125deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,.08) 28%,rgba(255,255,255,0) 55%,rgba(255,255,255,.35) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+.btn::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(160deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.12) 22%,rgba(255,255,255,0) 48%);
+  mix-blend-mode:soft-light;opacity:.8;
+}
+.btn:hover{
+  background:rgba(24,42,38,.82);transform:translateY(-2px);
+  box-shadow:
+    0 1.5px 0 rgba(255,255,255,.9) inset,
+    0 -6px 14px rgba(255,255,255,.18) inset,
+    0 -1.5px 5px rgba(15,25,23,.16) inset,
+    0 10px 20px -10px var(--lqg-shadow),
+    0 32px 54px -20px var(--lqg-shadow);
+}
+.btn.ghost{background:var(--lqg-light-bg);color:var(--encre)}
+.btn.ghost::before{
+  background:linear-gradient(125deg,rgba(255,255,255,1) 0%,rgba(255,255,255,.15) 28%,rgba(255,255,255,0) 55%,rgba(255,255,255,.65) 100%);
+}
+.btn.ghost::after{mix-blend-mode:overlay;opacity:.9}
+.btn.ghost:hover{background:rgba(255,253,248,.66)}
 .btn-sm{padding:11px 22px;font-size:11.5px}
+@media(prefers-reduced-transparency:reduce){
+  .btn{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--encre)}
+  .btn.ghost{background:rgba(250,246,239,.98);color:var(--encre)}
+  .btn::before,.btn::after{display:none}
+}
 
 /* REVEAL — opacity + translate uniquement (compositable, pas de reflow) */
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .8s var(--r),transform .8s var(--r)}
@@ -140,16 +189,52 @@ ul{list-style:none}
 .reveal-img{opacity:0;transition:opacity 1s var(--r)}
 .reveal-img.vu{opacity:1}
 
-/* NAV — barre fine, transparente sur le hero, pleine à partir du scroll */
+/* NAV — capsule flottante en Liquid Glass, détachée du bord. Le verre
+   lense réellement la photo ou le fond crème qui défile dessous (flou +
+   saturation, en direct), avec un reflet sur le bord et une ombre de
+   profondeur — matériau réservé à cette chrome, jamais au contenu.
+   S'intensifie dès qu'il y a quelque chose à lenser en dessous
+   (.is-scrolled, posé par app.js) pour rester lisible en toute
+   circonstance. Repli en matériau opaque si "Réduire la transparence"
+   est demandé par le système ; les transitions suivent déjà la règle
+   globale "Réduire les animations" plus haut dans ce fichier. */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
-  border-bottom:1px solid transparent;
-  transition:background-color .35s var(--r),border-color .35s var(--r);
+  padding:16px 16px 0;
 }
-nav.is-scrolled{background:rgba(245,240,232,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom-color:rgba(169,130,79,.18)}
 .nav-in{
-  max-width:var(--maxw);margin:0 auto;padding:20px var(--pad);
+  position:relative;isolation:isolate;
+  max-width:var(--maxw);margin:0 auto;padding:11px 22px;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
+  border-radius:999px;
+  background:var(--lqg-light-bg);
+  -webkit-backdrop-filter:blur(var(--lqg-blur)) saturate(var(--lqg-sat));
+  backdrop-filter:blur(var(--lqg-blur)) saturate(var(--lqg-sat));
+  box-shadow:
+    0 1.5px 0 rgba(255,255,255,.8) inset,
+    0 -6px 14px rgba(255,255,255,.14) inset,
+    0 -1.5px 5px rgba(15,25,23,.16) inset,
+    0 8px 16px -10px var(--lqg-shadow),
+    0 26px 46px -20px var(--lqg-shadow);
+  transition:background .4s var(--r),box-shadow .4s var(--r);
+}
+.nav-in::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1.75px;
+  background:linear-gradient(125deg,rgba(255,255,255,1) 0%,rgba(255,255,255,.15) 28%,rgba(255,255,255,0) 55%,rgba(255,255,255,.65) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+.nav-in::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(160deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.12) 22%,rgba(255,255,255,0) 48%);
+  mix-blend-mode:overlay;opacity:.9;
+}
+nav.is-scrolled .nav-in{background:rgba(255,253,248,.8)}
+nav.is-scrolled .nav-in::before{opacity:.6}
+@media(prefers-reduced-transparency:reduce){
+  .nav-in{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(250,246,239,.98);box-shadow:0 8px 20px -10px var(--lqg-shadow)}
+  .nav-in::before,.nav-in::after{display:none}
 }
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-logo{height:36px;width:auto}
@@ -398,6 +483,35 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .footer-brand{display:flex;align-items:center;gap:10px}
 .footer-brand img{height:28px;width:auto}
 .footer-brand span{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--encre)}
+
+/* Icône Instagram — même capsule en Liquid Glass que la nav et les boutons
+   du hero : c'est un contrôle (un lien), pas du contenu. */
+.social-icon{
+  position:relative;isolation:isolate;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:999px;flex-shrink:0;
+  color:var(--encre);background:var(--lqg-light-bg);
+  -webkit-backdrop-filter:blur(var(--lqg-blur)) saturate(var(--lqg-sat));
+  backdrop-filter:blur(var(--lqg-blur)) saturate(var(--lqg-sat));
+  box-shadow:
+    0 1.5px 0 rgba(255,255,255,.8) inset,
+    0 -1.5px 5px rgba(15,25,23,.16) inset,
+    0 8px 16px -10px var(--lqg-shadow);
+  transition:background .35s var(--r),color .25s var(--r),transform .25s var(--r);
+}
+.social-icon svg{width:16px;height:16px}
+.social-icon::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;
+  background:linear-gradient(125deg,rgba(255,255,255,1) 0%,rgba(255,255,255,.15) 28%,rgba(255,255,255,0) 55%,rgba(255,255,255,.65) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+.social-icon:hover{color:var(--or-texte);background:rgba(255,253,248,.7);transform:translateY(-1px)}
+@media(prefers-reduced-transparency:reduce){
+  .social-icon{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(250,246,239,.98)}
+  .social-icon::before{display:none}
+}
 .footer-links{display:flex;gap:24px;flex-wrap:wrap}
 .footer-links a{text-decoration:none;letter-spacing:.08em;text-transform:uppercase;font-size:11px;color:var(--encre-2);transition:color .2s}
 .footer-links a:hover{color:var(--encre)}
