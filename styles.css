@@ -807,3 +807,19 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
   color:var(--encre-2);cursor:pointer;
 }
 .field-consent label a{color:var(--encre);text-decoration:underline;text-underline-offset:3px}
+
+/* Bandeau de consentement aux cookies (Google Analytics) */
+.cookie-bandeau{
+  position:fixed;left:0;right:0;bottom:0;z-index:300;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;
+  padding:18px 24px;background:rgba(35,65,61,.97);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.cookie-bandeau p{margin:0;font-size:13.5px;line-height:1.6;color:var(--fond);flex:1;min-width:240px;max-width:640px}
+.cookie-bandeau a{color:var(--fond);text-decoration:underline;text-underline-offset:3px}
+.cookie-actions{display:flex;gap:10px;flex-shrink:0}
+@media(max-width:900px){
+  .cookie-bandeau{bottom:76px;padding:16px}
+  .cookie-actions{width:100%}
+  .cookie-actions .btn{flex:1}
+}

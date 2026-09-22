@@ -292,3 +292,49 @@ avisDots.forEach((dot, i) => {
     });
   });
 })();
+
+// Bandeau cookies — Google Analytics ne se charge qu'après consentement explicite.
+// gtag('consent', 'default', {denied}) est déjà posé dans le <head> de chaque page.
+(function(){
+  const GA_ID = 'G-SKTD4MFMKF';
+  const STOCKAGE = 'consentement_cookies';
+
+  function chargerAnalytics(){
+    if(document.getElementById('ga-script')) return;
+    const s = document.createElement('script');
+    s.id = 'ga-script';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.gtag('js', new Date());
+    window.gtag('consent', 'update', { analytics_storage: 'granted' });
+    window.gtag('config', GA_ID);
+  }
+
+  let choix;
+  try { choix = localStorage.getItem(STOCKAGE); } catch(e) { choix = null; }
+
+  if(choix === 'accepte'){ chargerAnalytics(); return; }
+  if(choix === 'refuse') return;
+
+  const bandeau = document.createElement('div');
+  bandeau.className = 'cookie-bandeau';
+  bandeau.setAttribute('role', 'region');
+  bandeau.setAttribute('aria-label', 'Consentement aux cookies');
+  bandeau.innerHTML = `
+    <p>Ce site utilise Google Analytics pour mesurer sa fréquentation. Vous pouvez accepter ou refuser — votre choix n'affecte pas votre navigation. <a href="/politique-confidentialite">En savoir plus</a></p>
+    <div class="cookie-actions">
+      <button type="button" class="btn ghost btn-sm" data-choix="refuse">Refuser</button>
+      <button type="button" class="btn btn-sm" data-choix="accepte">Accepter</button>
+    </div>`;
+  document.body.appendChild(bandeau);
+
+  bandeau.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = btn.dataset.choix;
+      try { localStorage.setItem(STOCKAGE, val); } catch(e) {}
+      if(val === 'accepte') chargerAnalytics();
+      bandeau.remove();
+    });
+  });
+})();
