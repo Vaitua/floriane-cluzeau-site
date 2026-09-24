@@ -823,3 +823,63 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
   .cookie-actions{width:100%}
   .cookie-actions .btn{flex:1}
 }
+
+/* ==========================================================================
+   INTRO — « La lymphe se remet à circuler » (page d'accueil, intro.js)
+   Première visite : rideau vert encre (le poids) sur lequel un réseau
+   lymphatique se remplit puis se draine ; la lumière s'ouvre depuis le
+   ganglion (la légèreté). Le réseau reste ensuite en filigrane derrière le
+   texte du hero. Absent si mouvement réduit ou WebGL2 indisponible.
+   ========================================================================== */
+.hero{position:relative}
+.hero-content{position:relative;z-index:1}
+.lymphe-canvas{
+  position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;
+  opacity:0;transition:opacity 1.4s var(--r);
+}
+.lymphe-canvas.visible{opacity:1}
+.lymphe-canvas.au-dessus{z-index:401;transition:none}
+
+/* Défilement bloqué jusqu'à la fin du rideau ; la place de la barre de défilement
+   reste réservée pour que la page ne se décale pas quand elle réapparaît. */
+html.intro-on,html.intro-verrou{overflow:hidden;scrollbar-gutter:stable}
+html.intro-verrou{background:var(--fond);transition:background-color .9s var(--r)}
+html.intro-on{background:#142825}
+html.intro-on .hero .reveal{opacity:0;transform:translateY(14px)}
+html.intro-on .hero-media img{opacity:0}
+
+.intro-rideau,.intro-marque{display:none}
+html.intro-on .intro-rideau,.intro-rideau.actif{display:block}
+html.intro-on .intro-marque,.intro-marque.actif{display:flex}
+.intro-rideau{
+  position:fixed;inset:0;z-index:400;
+  background:radial-gradient(120% 90% at 50% 36%,#2B4B46 0%,#1F3A36 48%,#142825 100%);
+}
+/* Le nom sort du flou en même temps que le réseau, puis s'efface sans heurt */
+.intro-marque{
+  position:fixed;left:0;right:0;top:54svh;z-index:402;
+  flex-direction:column;align-items:center;text-align:center;padding:0 24px;
+  pointer-events:none;transition:opacity 1s var(--r);
+}
+.intro-nom{
+  font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;
+  font-size:clamp(38px,5.4vw,64px);line-height:1.05;color:var(--fond);
+  letter-spacing:.06em;opacity:0;transform:translateY(8px);filter:blur(7px);
+  transition:opacity 1.5s var(--r),transform 2.2s var(--r),filter 1.6s var(--r),letter-spacing 2.8s var(--r);
+}
+.intro-metier{
+  margin-top:14px;display:flex;align-items:center;gap:12px;
+  font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:rgba(245,240,232,.72);
+  opacity:0;transition:opacity 1.4s var(--r) .35s;
+}
+.intro-metier::before,.intro-metier::after{content:"";width:22px;height:1px;background:var(--or)}
+.intro-passer{
+  position:fixed;left:0;right:0;bottom:28px;
+  font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,240,232,.38);
+  opacity:0;transition:opacity 1.2s var(--r) .4s;
+}
+.intro-passer .tactile{display:none}
+@media(hover:none){.intro-passer .tactile{display:inline}.intro-passer .souris{display:none}}
+.intro-marque.on .intro-nom{opacity:1;transform:none;filter:none;letter-spacing:.02em}
+.intro-marque.on .intro-metier,.intro-marque.on .intro-passer{opacity:1}
+.intro-marque.off{opacity:0}

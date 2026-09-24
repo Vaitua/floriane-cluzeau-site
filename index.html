@@ -6,6 +6,19 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('consent', 'default', { 'analytics_storage': 'denied', 'ad_storage': 'denied' });
   </script>
+  <script>
+    /* Intro « la lymphe se remet à circuler » (intro.js) — décidée avant le premier
+       affichage pour que la page n'apparaisse pas une fraction de seconde avant le
+       rideau. Première visite uniquement ; ?intro dans l'URL la rejoue. Filet de
+       sécurité : si intro.js ne prend pas la main en 3 s, la page est libérée. */
+    (function(){try{
+      var h=document.documentElement;
+      if((location.search.indexOf('intro')>-1||!localStorage.getItem('intro_vue'))&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+        h.classList.add('intro-on');
+        setTimeout(function(){if(!window.introPrise){h.classList.remove('intro-on');document.querySelectorAll('.intro-rideau,.intro-marque').forEach(function(e){e.remove()})}},3000);
+      }
+    }catch(e){}})();
+  </script>
   <meta name="view-transition" content="same-origin">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,6 +61,12 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="intro-rideau" aria-hidden="true"></div>
+<div class="intro-marque" aria-hidden="true">
+  <p class="intro-nom">Floriane Cluzeau</p>
+  <p class="intro-metier">Drainage lymphatique · Méthode Nado®</p>
+  <span class="intro-passer"><span class="souris">Cliquer pour passer</span><span class="tactile">Toucher pour passer</span></span>
+</div>
 <a class="skip-link" href="#main">Aller au contenu</a>
 
 <nav aria-label="Navigation principale">
@@ -352,6 +371,7 @@
   <a href="https://www.planity.com/floriane-cluzeau-31600-muret" class="btn" target="_blank" rel="noopener">Réserver</a>
 </div>
 
+  <script src="intro.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
