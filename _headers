@@ -1,6 +1,20 @@
 # En-têtes HTTP servis par Cloudflare Pages.
 # Ce fichier n'est pas une page : il n'apparaît nulle part sur le site.
 
+# Sécurité, sur toutes les pages :
+# - HSTS : le navigateur n'essaie plus jamais la version http:// (sans includeSubDomains,
+#   pour ne pas casser un éventuel sous-domaine resté en http).
+# - Le site ne peut pas être affiché dans le cadre d'un autre site (anti-clickjacking).
+# - Aucune fonction sensible du navigateur (caméra, micro, position…) n'est demandée.
+# Pas encore de Content-Security-Policy complète : les scripts en ligne du bilan
+# (onclick) devraient d'abord être déplacés dans un fichier .js.
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Frame-Options: DENY
+  Content-Security-Policy: frame-ancestors 'none'
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  X-Content-Type-Options: nosniff
+
 # Les polices ne changent jamais. Le navigateur les garde un an
 # et ne les redemande plus — les pages suivantes s'affichent instantanément.
 /assets/fonts/*
@@ -9,3 +23,11 @@
 # Les images sont versionnées par leur nom (hero-1280.webp, etc.)
 /assets/img/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Scripts tiers hébergés ici, versionnés par leur nom (emailjs-4.4.1.min.js)
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# La vidéo garde le même nom si elle est remplacée : 30 jours, pas « immutable »
+/assets/video/*
+  Cache-Control: public, max-age=2592000

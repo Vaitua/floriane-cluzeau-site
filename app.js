@@ -1,30 +1,11 @@
-// Intercepte les clics pour une navigation fluide instantanée
-document.addEventListener('click', (e) => {
-  const link = e.target.closest('a');
-  if (link && link.href.startsWith(window.location.origin) && !link.getAttribute('target')) {
-    e.preventDefault();
-    if (!document.startViewTransition) {
-      window.location = link.href;
-      return;
-    }
-    document.startViewTransition(() => {
-      window.location = link.href;
-    });
-  }
-});
+// Transitions entre pages : gérées en CSS (@view-transition dans styles.css).
 
-// Reveal au scroll — opacity/transform uniquement
+// Reveal au scroll — opacity/transform uniquement. Le haut de l'accueil n'en a pas :
+// il s'affiche sans attendre ce script (vitesse d'affichage mesurée par Google).
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vu'); io.unobserve(e.target); } });
 }, {threshold: .12});
 document.querySelectorAll('.reveal, .reveal-img').forEach(el => io.observe(el));
-
-// Image hero : fondu one-shot au chargement (pas de parallax continu — coût perf inutile)
-const heroImg = document.querySelector('.hero-media img');
-if(heroImg){
-  heroImg.addEventListener('load', function(){ this.classList.add('loaded'); });
-  if(heroImg.complete){ heroImg.classList.add('loaded'); }
-}
 
 // Nav : fond plein à partir du scroll
 const nav = document.querySelector('nav');
@@ -295,6 +276,8 @@ avisDots.forEach((dot, i) => {
 
 // Bandeau cookies — Google Analytics ne se charge qu'après consentement explicite.
 // gtag('consent', 'default', {denied}) est déjà posé dans le <head> de chaque page.
+// Le lien « Gérer les cookies » du pied de page rouvre le bandeau : retirer son
+// consentement doit être aussi simple que le donner (CNIL).
 (function(){
   const GA_ID = 'G-SKTD4MFMKF';
   const STOCKAGE = 'consentement_cookies';
@@ -311,30 +294,50 @@ avisDots.forEach((dot, i) => {
     window.gtag('config', GA_ID);
   }
 
+  // Retrait du consentement : on coupe la mesure et on efface les cookies _ga déjà posés
+  function retirerAnalytics(){
+    window.gtag('consent', 'update', { analytics_storage: 'denied' });
+    const domaine = location.hostname.replace(/^www\./, '');
+    document.cookie.split(';').map(c => c.split('=')[0].trim())
+      .filter(nom => nom === '_ga' || nom.indexOf('_ga_') === 0)
+      .forEach(nom => {
+        [domaine, '.' + domaine, ''].forEach(d => {
+          document.cookie = nom + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + (d ? '; domain=' + d : '');
+        });
+      });
+  }
+
+  function afficherBandeau(){
+    if(document.querySelector('.cookie-bandeau')) return;
+    const bandeau = document.createElement('div');
+    bandeau.className = 'cookie-bandeau';
+    bandeau.setAttribute('role', 'region');
+    bandeau.setAttribute('aria-label', 'Consentement aux cookies');
+    bandeau.innerHTML = `
+      <p>Ce site utilise Google Analytics pour mesurer sa fréquentation. Vous pouvez accepter ou refuser — votre choix n'affecte pas votre navigation. <a href="/politique-confidentialite">En savoir plus</a></p>
+      <div class="cookie-actions">
+        <button type="button" class="btn ghost btn-sm" data-choix="refuse">Refuser</button>
+        <button type="button" class="btn btn-sm" data-choix="accepte">Accepter</button>
+      </div>`;
+    document.body.appendChild(bandeau);
+
+    bandeau.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.choix;
+        try { localStorage.setItem(STOCKAGE, val); } catch(e) {}
+        if(val === 'accepte') chargerAnalytics(); else retirerAnalytics();
+        bandeau.remove();
+      });
+    });
+  }
+
+  document.querySelectorAll('[data-cookies]').forEach(btn => {
+    btn.addEventListener('click', afficherBandeau);
+  });
+
   let choix;
   try { choix = localStorage.getItem(STOCKAGE); } catch(e) { choix = null; }
 
-  if(choix === 'accepte'){ chargerAnalytics(); return; }
-  if(choix === 'refuse') return;
-
-  const bandeau = document.createElement('div');
-  bandeau.className = 'cookie-bandeau';
-  bandeau.setAttribute('role', 'region');
-  bandeau.setAttribute('aria-label', 'Consentement aux cookies');
-  bandeau.innerHTML = `
-    <p>Ce site utilise Google Analytics pour mesurer sa fréquentation. Vous pouvez accepter ou refuser — votre choix n'affecte pas votre navigation. <a href="/politique-confidentialite">En savoir plus</a></p>
-    <div class="cookie-actions">
-      <button type="button" class="btn ghost btn-sm" data-choix="refuse">Refuser</button>
-      <button type="button" class="btn btn-sm" data-choix="accepte">Accepter</button>
-    </div>`;
-  document.body.appendChild(bandeau);
-
-  bandeau.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const val = btn.dataset.choix;
-      try { localStorage.setItem(STOCKAGE, val); } catch(e) {}
-      if(val === 'accepte') chargerAnalytics();
-      bandeau.remove();
-    });
-  });
+  if(choix === 'accepte') chargerAnalytics();
+  else if(choix !== 'refuse') afficherBandeau();
 })();

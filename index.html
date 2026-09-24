@@ -1,78 +1,116 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset="UTF-8">
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('consent', 'default', { 'analytics_storage': 'denied', 'ad_storage': 'denied' });
   </script>
-  <script>
-    /* Intro « la lymphe se remet à circuler » (intro.js) — décidée avant le premier
-       affichage pour que la page n'apparaisse pas une fraction de seconde avant le
-       rideau. Première visite uniquement ; ?intro dans l'URL la rejoue. Filet de
-       sécurité : si intro.js ne prend pas la main en 3 s, la page est libérée. */
-    (function(){try{
-      var h=document.documentElement;
-      if((location.search.indexOf('intro')>-1||!localStorage.getItem('intro_vue'))&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
-        h.classList.add('intro-on');
-        setTimeout(function(){if(!window.introPrise){h.classList.remove('intro-on');document.querySelectorAll('.intro-rideau,.intro-marque').forEach(function(e){e.remove()})}},3000);
-      }
-    }catch(e){}})();
-  </script>
-  <meta name="view-transition" content="same-origin">
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Floriane Cluzeau — Drainage Lymphatique Méthode Nado® · Muret</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-<meta name="description" content="Praticienne certifiée en drainage lymphatique Méthode Nado® à Muret. Jambes légères, rétention d'eau, silhouette — en cabinet ou à domicile dans un rayon de 30km autour de Muret.">
+<title>Drainage lymphatique à Muret – Méthode Nado® | Floriane Cluzeau</title>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="Drainage lymphatique Méthode Nado® à Muret : jambes légères, rétention d'eau, silhouette. Au cabinet ou à domicile (30 km). Praticienne certifiée.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://florianecluzeau.fr/">
-<meta property="og:title" content="Floriane Cluzeau — Drainage Lymphatique Méthode Nado®">
-<meta property="og:description" content="Praticienne certifiée à Muret. Drainage lymphatique Méthode Nado® — jambes légères, rétention d'eau, silhouette.">
+<meta property="og:title" content="Drainage lymphatique à Muret – Méthode Nado® | Floriane Cluzeau">
+<meta property="og:description" content="Praticienne certifiée Méthode Nado® à Muret. Drainage lymphatique au cabinet ou à domicile dans un rayon de 30 km.">
 <meta property="og:url" content="https://florianecluzeau.fr/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Floriane Cluzeau — Drainage Lymphatique Méthode Nado®">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://florianecluzeau.fr/assets/img/og-floriane-cluzeau.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Floriane Cluzeau, praticienne certifiée Méthode Nado®, dans son cabinet de Muret">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-300-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-300-normal.woff2" crossorigin>
 <link rel="preload" as="image" imagesrcset="assets/img/hero-640.webp 640w, assets/img/hero-960.webp 960w, assets/img/hero-1280.webp 1280w, assets/img/hero-1600.webp 1600w" imagesizes="(max-width: 900px) 100vw, 58vw" fetchpriority="high">
+<!-- Données structurées : le cabinet (même @id sur /soins, qui y ajoute les offres),
+     la praticienne et le site. Pas d'aggregateRating : Google n'affiche jamais d'étoiles
+     pour des avis qu'une entreprise déclare sur son propre site. Coordonnées GPS : Base
+     Adresse Nationale, au numéro. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "HealthAndBeautyBusiness",
-  "name": "Floriane Cluzeau - Drainage Lymphatique",
-  "image": "https://florianecluzeau.fr/logo.png",
-  "@id": "https://florianecluzeau.fr",
-  "url": "https://florianecluzeau.fr",
-  "telephone": "+33769853679",
-  "priceRange": "100€ - 160€",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "23 Avenue du Président Vincent Auriol",
-    "addressLocality": "Muret",
-    "postalCode": "31600",
-    "addressCountry": "FR"
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": 43.4600, "longitude": 1.3200 },
-  "areaServed": { "@type": "GeoCircle", "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 43.4600, "longitude": 1.3200 }, "geoRadius": "30000" },
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "14" },
-  "description": "Praticienne certifiée en drainage lymphatique Méthode Nado® à Muret. Déplacements à domicile dans un rayon de 30km.",
-  "sameAs": ["https://www.planity.com/floriane-cluzeau-31600-muret"]
+  "@graph": [
+    {
+      "@type": "HealthAndBeautyBusiness",
+      "@id": "https://florianecluzeau.fr/#cabinet",
+      "name": "Floriane Cluzeau — Drainage Lymphatique Méthode Nado®",
+      "url": "https://florianecluzeau.fr/",
+      "image": [
+        "https://florianecluzeau.fr/assets/img/og-floriane-cluzeau.jpg",
+        "https://florianecluzeau.fr/assets/img/hero-1600.webp",
+        "https://florianecluzeau.fr/assets/img/tech-1200.webp"
+      ],
+      "logo": "https://florianecluzeau.fr/assets/img/monogram-v2.webp",
+      "description": "Drainage lymphatique et remodelage Méthode Nado® à Muret (Haute-Garonne), au cabinet ou à domicile dans un rayon de 30 km. Activité de bien-être et d'esthétique, non médicale.",
+      "telephone": "+33769853679",
+      "email": "floriane.drainage@gmail.com",
+      "priceRange": "100 € – 160 €",
+      "currenciesAccepted": "EUR",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "23 Avenue du Président Vincent Auriol",
+        "addressLocality": "Muret",
+        "postalCode": "31600",
+        "addressRegion": "Haute-Garonne",
+        "addressCountry": "FR"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 43.468545, "longitude": 1.33637 },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 43.468545, "longitude": 1.33637 },
+        "geoRadius": "30000"
+      },
+      "founder": { "@id": "https://florianecluzeau.fr/#floriane" },
+      "sameAs": [
+        "https://www.planity.com/floriane-cluzeau-31600-muret",
+        "https://www.instagram.com/floriane.drainage/",
+        "https://maps.app.goo.gl/QfNzAHzoGHUL6acL8"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://florianecluzeau.fr/#floriane",
+      "name": "Floriane Cluzeau",
+      "jobTitle": "Praticienne certifiée Méthode Nado®",
+      "image": "https://florianecluzeau.fr/assets/img/portrait-floriane-1200.webp",
+      "url": "https://florianecluzeau.fr/mon-approche",
+      "worksFor": { "@id": "https://florianecluzeau.fr/#cabinet" },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "certificate",
+        "name": "Certification Méthode Nado® — drainage lymphatique et remodelage",
+        "recognizedBy": { "@type": "Person", "name": "Élisabeth Nado", "url": "https://elisabethnado.com/" }
+      },
+      "sameAs": ["https://www.instagram.com/floriane.drainage/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://florianecluzeau.fr/#site",
+      "url": "https://florianecluzeau.fr/",
+      "name": "Floriane Cluzeau",
+      "alternateName": "Floriane Cluzeau — Drainage Lymphatique Méthode Nado®",
+      "inLanguage": "fr-FR",
+      "publisher": { "@id": "https://florianecluzeau.fr/#cabinet" }
+    }
+  ]
 }
 </script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="intro-rideau" aria-hidden="true"></div>
-<div class="intro-marque" aria-hidden="true">
-  <p class="intro-nom">Floriane Cluzeau</p>
-  <p class="intro-metier">Drainage lymphatique · Méthode Nado®</p>
-  <span class="intro-passer"><span class="souris">Cliquer pour passer</span><span class="tactile">Toucher pour passer</span></span>
-</div>
 <a class="skip-link" href="#main">Aller au contenu</a>
 
 <nav aria-label="Navigation principale">
   <div class="nav-in">
     <a href="/" class="brand" aria-label="Accueil Floriane Cluzeau">
-      <img src="assets/img/monogram-v2.webp" alt="" class="brand-logo" width="417" height="540" aria-hidden="true">
+      <img src="assets/img/monogram-v2-120.webp" alt="" class="brand-logo" width="93" height="120" aria-hidden="true">
       <span class="brand-text">Floriane Cluzeau</span>
     </a>
     <ul class="nav-links" role="list">
@@ -82,6 +120,7 @@
       <li><a href="seance">Votre Séance</a></li>
       <li><a href="bilan">Bilan</a></li>
       <li><a href="faq">FAQ</a></li>
+      <li><a href="contact">Contact</a></li>
     </ul>
     <div class="nav-actions">
       <a href="tel:+33769853679" class="nav-tel">07 69 85 36 79</a>
@@ -105,18 +144,20 @@
 </div>
 
 <header class="hero">
+  <!-- Haut de page affiché sans animation d'apparition : c'est ce que Google
+       chronomètre (LCP). Le h1 porte les mots-clés ; le slogan reste le grand titre visuel. -->
   <div class="hero-content">
-    <p class="hero-eyebrow eyebrow reveal">Certifiée Méthode Nado® · Formée par Élisabeth Nado</p>
-    <h1 class="hero-title">
-      <span class="reveal reveal-d1">Un protocole certifié.</span>
-      <span class="em reveal reveal-d2">Des résultats mesurés.</span>
-    </h1>
-    <p class="hero-sub reveal reveal-d3">Formée directement par Élisabeth Nado — créatrice de la méthode, 28 ans d'expertise au service des plus grands palaces parisiens — je suis à ce jour la première praticienne certifiée Méthode Nado® du bassin toulousain. Chaque accompagnement suit un protocole mesuré, du bilan initial au résultat.</p>
-    <div class="hero-actions reveal reveal-d3">
+    <h1 class="hero-eyebrow eyebrow">Drainage lymphatique Méthode Nado® à Muret</h1>
+    <p class="hero-title">
+      <span>Un protocole certifié.</span>
+      <span class="em">Des résultats mesurés.</span>
+    </p>
+    <p class="hero-sub">Formée directement par Élisabeth Nado — créatrice de la méthode, 28 ans d'expertise au service des plus grands palaces parisiens — je suis à ce jour la première praticienne certifiée Méthode Nado® du bassin toulousain. Chaque accompagnement suit un protocole mesuré, du bilan initial au résultat.</p>
+    <div class="hero-actions">
       <a href="https://www.planity.com/floriane-cluzeau-31600-muret" class="btn" target="_blank" rel="noopener">Prendre rendez-vous</a>
       <a href="bilan" class="btn ghost">Faire mon bilan</a>
     </div>
-    <div class="hero-quote-chip reveal reveal-d3">
+    <div class="hero-quote-chip">
       <span class="stars" aria-hidden="true">★★★★★</span>
       <blockquote>
         <q>Une très belle découverte, une vraie bulle de douceur et surtout une belle rencontre.</q>
@@ -124,12 +165,12 @@
       </blockquote>
     </div>
 
-    <p class="hero-credentials v2 reveal reveal-d3">
+    <p class="hero-credentials v2">
       <span class="stars" aria-hidden="true">★★★★★</span>
       <span><strong>5,0</strong> sur Google · 15 avis · <a href="tel:+33769853679">07 69 85 36 79</a></span>
     </p>
   </div>
-  <div class="hero-media reveal-img">
+  <div class="hero-media">
     <img
       src="assets/img/hero-1280.webp"
       srcset="assets/img/hero-640.webp 640w, assets/img/hero-960.webp 960w, assets/img/hero-1280.webp 1280w, assets/img/hero-1600.webp 1600w"
@@ -194,7 +235,9 @@
 
 <section class="video-presentation" id="video">
   <div class="video-frame reveal-img">
-    <video id="video-presentation" muted loop playsinline preload="auto" poster="assets/video/poster.webp">
+    <!-- preload="none" : les 5,4 Mo ne se chargent que quand app.js lance la lecture
+         (bandeau à l'écran), jamais en concurrence avec le haut de page. -->
+    <video id="video-presentation" muted loop playsinline preload="none" poster="assets/video/poster.webp">
       <source src="assets/video/presentation.mp4" type="video/mp4">
     </video>
     <div class="video-overlay">
@@ -266,6 +309,11 @@
         <div class="menu-info"><h3>L'Essentiel</h3><p>Une séance d'entretien pour prolonger les bienfaits du suivi, accompagner les périodes de fatigue ou de rétention ponctuelle. Réservée aux clientes ayant déjà débuté un accompagnement.</p></div>
         <span class="menu-price">130 €</span>
       </li>
+      <li class="menu-row reveal reveal-d2">
+        <span class="menu-num">05</span>
+        <div class="menu-info"><h3>Massage Gestion du Stress</h3><p>Un massage Méthode Nado® inspiré du massage suédois, pensé comme une vraie récupération pour le corps et le système nerveux. Accessible sans séance Initiale préalable.</p></div>
+        <span class="menu-price">100 € · 50 min</span>
+      </li>
     </ul>
     <a href="soins" class="text-link reveal">Voir tous les soins &amp; tarifs →</a>
   </div>
@@ -334,7 +382,7 @@
 <footer>
   <div class="wrap footer-in">
     <div class="footer-brand">
-      <img src="assets/img/monogram-v2.webp" width="417" height="540" alt="Logo Floriane Cluzeau">
+      <img src="assets/img/monogram-v2-120.webp" width="93" height="120" alt="" aria-hidden="true">
       <span>Floriane Cluzeau</span>
       <a href="https://www.instagram.com/floriane.drainage/" class="social-icon" target="_blank" rel="noopener" aria-label="Floriane Cluzeau sur Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -362,6 +410,7 @@
     <div class="footer-legal">
       <a href="mentions-legales">Mentions légales</a>
       <a href="politique-confidentialite">Politique de confidentialité</a>
+      <button type="button" data-cookies>Gérer les cookies</button>
     </div>
   </div>
 </footer>
@@ -371,7 +420,6 @@
   <a href="https://www.planity.com/floriane-cluzeau-31600-muret" class="btn" target="_blank" rel="noopener">Réserver</a>
 </div>
 
-  <script src="intro.js"></script>
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

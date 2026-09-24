@@ -1,16 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset="UTF-8">
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('consent', 'default', { 'analytics_storage': 'denied', 'ad_storage': 'denied' });
   </script>
-  <meta name="view-transition" content="same-origin">
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bilan personnalisé — Floriane Cluzeau · Drainage Lymphatique Méthode Nado® Muret</title>
-  <link rel="icon" type="image/png" href="favicon.png">
+<title>Bilan personnalisé en 6 questions – Drainage lymphatique Muret</title>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="description" content="Faites votre bilan personnalisé pour trouver l'accompagnement de drainage lymphatique Méthode Nado® adapté à vos besoins.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://florianecluzeau.fr/bilan">
@@ -18,6 +19,13 @@
 <meta property="og:description" content="Faites votre bilan personnalisé pour trouver l'accompagnement Méthode Nado® adapté à vos besoins.">
 <meta property="og:url" content="https://florianecluzeau.fr/bilan">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Floriane Cluzeau — Drainage Lymphatique Méthode Nado®">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://florianecluzeau.fr/assets/img/og-floriane-cluzeau.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Floriane Cluzeau, praticienne certifiée Méthode Nado®, dans son cabinet de Muret">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-300-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-300-normal.woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
@@ -188,7 +196,7 @@ a{color:inherit}
 <nav aria-label="Navigation principale">
   <div class="nav-in">
     <a href="/" class="brand" aria-label="Accueil Floriane Cluzeau">
-      <img src="assets/img/monogram-v2.webp" alt="" class="brand-logo" width="417" height="540" aria-hidden="true">
+      <img src="assets/img/monogram-v2-120.webp" alt="" class="brand-logo" width="93" height="120" aria-hidden="true">
       <span class="brand-text">Floriane Cluzeau</span>
     </a>
     <ul class="nav-links" role="list">
@@ -198,6 +206,7 @@ a{color:inherit}
       <li><a href="seance">Votre Séance</a></li>
       <li><a href="bilan" aria-current="page">Bilan</a></li>
       <li><a href="faq">FAQ</a></li>
+      <li><a href="contact">Contact</a></li>
     </ul>
     <div class="nav-actions">
       <a href="tel:+33769853679" class="nav-tel">07 69 85 36 79</a>
@@ -235,6 +244,7 @@ a{color:inherit}
   <div id="body-wrap">
     <img id="body-img"
       src="assets/img/lymph-body.webp"
+      width="420" height="840"
       alt="Système lymphatique féminin — bilan personnalisé"
       draggable="false"/>
 
@@ -432,8 +442,16 @@ a{color:inherit}
     <div class="verre lisible email-card" id="email-card">
       <h2>Votre profil est <em>prêt</em></h2>
       <p>Laissez votre adresse pour recevoir votre bilan complet directement dans votre boîte mail — ou continuez sans si vous préférez.</p>
-      <p style="font-size:12px;color:var(--encre-2);margin-bottom:20px;line-height:1.6;padding:12px 16px;background:rgba(169,130,79,.06);border-radius:12px;">Votre adresse n'est utilisée que pour vous envoyer ce bilan. Elle n'est enregistrée dans aucune base de données et ne sera jamais utilisée à des fins commerciales.</p>
-      <input type="email" id="email-input" placeholder="votre@email.fr" style="display:block;width:100%;max-width:360px;margin:0 auto 14px;padding:14px 20px;border-radius:100px;border:1.5px solid rgba(169,130,79,.3);background:rgba(255,255,255,.7);font-family:'Jost',sans-serif;font-size:15px;color:var(--encre);outline:none;text-align:center;">
+      <!-- Texte aligné sur ce que fait réellement le script (voir notifierFloriane) et sur
+           la politique de confidentialité : réponses transmises anonymement à Floriane,
+           adresse transmise seulement si la case est cochée. -->
+      <p style="font-size:12px;color:var(--encre-2);margin-bottom:20px;line-height:1.6;padding:12px 16px;background:rgba(169,130,79,.06);border-radius:12px;">Votre adresse sert uniquement à vous envoyer ce bilan (via notre prestataire d'envoi EmailJS) et ne sera jamais utilisée à des fins commerciales. Vos réponses sont transmises à Floriane Cluzeau sans votre nom ni votre adresse, pour l'aider à connaître les besoins exprimés. <a href="politique-confidentialite#bilan" style="color:inherit">En savoir plus</a></p>
+      <label for="email-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Votre adresse e-mail</label>
+      <input type="email" id="email-input" autocomplete="email" placeholder="votre@email.fr" style="display:block;width:100%;max-width:360px;margin:0 auto 14px;padding:14px 20px;border-radius:100px;border:1.5px solid rgba(169,130,79,.3);background:rgba(255,255,255,.7);font-family:'Jost',sans-serif;font-size:15px;color:var(--encre);outline:none;text-align:center;">
+      <div class="field-consent" style="display:flex;max-width:360px;margin:0 auto 18px;text-align:left">
+        <input type="checkbox" id="email-partage">
+        <label for="email-partage">Facultatif : je souhaite que Floriane reçoive aussi mon adresse avec mes réponses, pour pouvoir me recontacter.</label>
+      </div>
       <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
         <button class="btn" onclick="soumettreEmail()">Recevoir mon bilan par email</button>
         <button onclick="afficherResultat()" style="background:none;border:none;cursor:pointer;font-size:13px;color:var(--or-texte);text-decoration:underline;font-family:'Jost',sans-serif;padding:4px 0;">Voir mon profil directement &#8594;</button>
@@ -511,7 +529,7 @@ a{color:inherit}
 <footer>
   <div class="wrap footer-in">
     <div class="footer-brand">
-      <img src="assets/img/monogram-v2.webp" width="417" height="540" alt="Logo Floriane Cluzeau">
+      <img src="assets/img/monogram-v2-120.webp" width="93" height="120" alt="" aria-hidden="true">
       <span>Floriane Cluzeau</span>
       <a href="https://www.instagram.com/floriane.drainage/" class="social-icon" target="_blank" rel="noopener" aria-label="Floriane Cluzeau sur Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -539,6 +557,7 @@ a{color:inherit}
     <div class="footer-legal">
       <a href="mentions-legales">Mentions légales</a>
       <a href="politique-confidentialite">Politique de confidentialité</a>
+      <button type="button" data-cookies>Gérer les cookies</button>
     </div>
   </div>
 </footer>
@@ -551,7 +570,7 @@ a{color:inherit}
 <!-- EmailJS : envoi automatique du bilan personnalise a la cliente (cote client, sans backend).
      Configuration requise avant mise en production : voir EMAILJS_PUBLIC_KEY / SERVICE_ID / TEMPLATE_ID
      ci-dessous et le fichier email-template-bilan.html fourni a part. -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="assets/js/emailjs-4.4.1.min.js"></script>
 <script>
 // ================================================================
 // CONFIG EMAILJS — a completer une seule fois (compte gratuit sur emailjs.com)
@@ -1109,13 +1128,18 @@ function envoyerBilanParEmail(email, p, a){
   });
 }
 
-let dernierEmailSaisi = ''; // vide si la cliente a choisi "voir mon profil directement"
+// Adresse transmise à Floriane : seulement si la cliente a coché la case
+// « je souhaite que Floriane reçoive aussi mon adresse ». Vide sinon — les
+// réponses partent alors sans rien qui permette de l'identifier.
+let dernierEmailSaisi = '';
 
 // Notifie Floriane à CHAQUE bilan terminé, que la cliente ait laissé son
 // email ou non — avant ce correctif, seule la cliente était prévenue (et
 // uniquement si elle acceptait de laisser son adresse) : Floriane, elle,
 // ne recevait jamais rien quand quelqu'un cliquait "Voir mon profil
 // directement", ce qui est le cas le plus fréquent d'un bilan.
+// Tout ceci est décrit dans la politique de confidentialité (section « bilan ») :
+// la modifier si ce comportement change.
 function notifierFloriane(p, a){
   const fd=new FormData();
   // Formspree traite le champ nommé "email" de façon spéciale (reply-to +
@@ -1127,7 +1151,7 @@ function notifierFloriane(p, a){
   if(dernierEmailSaisi){
     fd.append('email', dernierEmailSaisi);
   } else {
-    fd.append('Email cliente', 'Non renseigné — a choisi "voir mon profil directement"');
+    fd.append('Email cliente', 'Non transmis (bilan anonyme)');
   }
   fd.append('Zone',rep[0]||'');
   fd.append('Profil',p.tag);
@@ -1146,7 +1170,7 @@ function notifierFloriane(p, a){
 function soumettreEmail(){
   const email=document.getElementById('email-input').value.trim();
   if(email&&email.includes('@')){
-    dernierEmailSaisi = email;
+    dernierEmailSaisi = document.getElementById('email-partage').checked ? email : '';
     const p=getProfil();
     const a=analyserProfil();
     envoyerBilanParEmail(email, p, a);
@@ -1193,6 +1217,8 @@ function recommencer(){
   document.getElementById('canvas-hint').style.display='block';
   document.getElementById('quiz-zone').style.display='none';
   document.getElementById('email-input').value='';
+  document.getElementById('email-partage').checked=false;
+  dernierEmailSaisi='';
   document.getElementById('email-card').classList.remove('vis');
   for(let i=1;i<=NB_QUESTIONS;i++){
     const el=document.getElementById('q'+i);

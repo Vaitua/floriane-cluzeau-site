@@ -75,6 +75,11 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+/* Fondu natif entre deux pages du site (Chrome, Edge, Safari 18.2+), sans JavaScript :
+   le navigateur ne l'applique qu'aux navigations internes et respecte Ctrl/Cmd+clic. */
+@media(prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -108,6 +113,8 @@ ul{list-style:none}
   display:flex;align-items:center;gap:12px;margin-bottom:20px;font-weight:400;
 }
 .eyebrow::before{content:"";width:28px;height:1px;background:var(--or);display:block;flex-shrink:0}
+/* Eyebrow porteur du h1 (mots-clés de la page) : même rendu qu'un eyebrow simple */
+h1.eyebrow{font-family:'Jost',sans-serif;font-weight:400;line-height:1.75;color:var(--encre-2)}
 
 /* Accent "vivant" — une seule occurrence sur tout le site (eyebrow Certification,
    page d'accueil). Icône adaptée de Ressources/secteurs/bien-etre-sante/icons/droplet.svg.
@@ -259,10 +266,17 @@ nav.is-scrolled .nav-in::before{opacity:.6}
 .mobile-menu a{text-decoration:none;font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--encre)}
 .mobile-menu .mobile-tel{font-family:'Jost',sans-serif;font-size:15px;color:var(--encre-2)}
 
+.nav-links a{white-space:nowrap}
 @media(min-width:901px){
   .nav-tel{display:inline}
 }
-@media(max-width:900px){
+/* 7 liens + téléphone ne tiennent pas sur une ligne sous ~1280px : le numéro
+   s'efface (il reste dans le hero et le pied de page), puis le menu passe en burger. */
+@media(min-width:1101px) and (max-width:1280px){
+  .nav-tel{display:none}
+  .nav-links{gap:24px}
+}
+@media(max-width:1100px){
   .nav-links{display:none}
   .nav-toggle{display:flex}
 }
@@ -276,7 +290,9 @@ nav.is-scrolled .nav-in::before{opacity:.6}
   display:flex;flex-direction:column;justify-content:center;
   padding:120px var(--pad) 64px calc(var(--pad) + 0px);
 }
-.hero-title{font-size:clamp(44px,6.6vw,92px);margin-bottom:26px}
+/* Le slogan est un paragraphe (le h1 porte les mots-clés, en eyebrow) : il reprend
+   donc lui-même le style des titres. */
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.05;color:var(--encre);font-size:clamp(44px,6.6vw,92px);margin-bottom:26px}
 .hero-title span{display:block}
 .hero-title .em{font-style:italic;color:var(--encre-2);margin-left:.35em}
 .hero-sub{font-size:16px;line-height:1.85;color:var(--encre-2);max-width:420px;margin-bottom:36px}
@@ -313,13 +329,12 @@ nav.is-scrolled .nav-in::before{opacity:.6}
 /* scale(1.12) permanent : marge nécessaire au parallaxe (app.js) pour translater
    l'image sans jamais découvrir ses bords — identique avec ou sans JS/parallaxe,
    donc aucun "saut" visuel quand le script prend le relais. */
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 18%;opacity:0;transition:opacity .8s var(--r);transform:scale(1.12);will-change:transform}
-.hero-media img.loaded{opacity:1}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 18%;transform:scale(1.12);will-change:transform}
 
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;min-height:auto}
   .hero-media{order:-1;aspect-ratio:4/5}
-  .hero-content{padding:100px var(--pad) 56px}
+  .hero-content{padding:36px var(--pad) 56px}
   .hero-title{font-size:clamp(38px,11vw,60px)}
 }
 
@@ -555,8 +570,9 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 
 /* En-tête de page générique : eyebrow + h1 + intro, sans photo ni overlay sombre */
 .page-head{padding:150px 0 90px;text-align:center}
-.page-head h1{font-size:clamp(38px,5vw,64px);margin:18px 0 20px}
-.page-head h1 em{font-style:italic;color:var(--encre-2)}
+.page-head h1:not(.eyebrow),.page-head .page-titre{font-size:clamp(38px,5vw,64px);margin:18px 0 20px}
+.page-head .page-titre{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.05;color:var(--encre);max-width:none}
+.page-head h1 em,.page-head .page-titre em{font-style:italic;color:var(--encre-2)}
 .page-head p{font-size:16px;color:var(--encre-2);line-height:1.85;max-width:560px;margin:0 auto}
 @media(max-width:700px){.page-head{padding:118px 0 64px}}
 
@@ -631,7 +647,7 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .icon-item{padding:28px 26px;border-bottom:1px solid rgba(169,130,79,.24);border-right:1px solid rgba(169,130,79,.24)}
 .icon-item:last-child{border-right:none}
 .icon-item svg{margin-bottom:14px}
-.icon-item h4{font-size:16.5px;font-family:'Cormorant Garamond',serif;font-weight:400;color:var(--encre);margin-bottom:8px}
+.icon-item h3{font-size:16.5px;font-family:'Cormorant Garamond',serif;font-weight:400;line-height:1.75;color:var(--encre);margin-bottom:8px}
 .icon-item p{font-size:13.5px;color:var(--encre-2);line-height:1.75}
 @media(max-width:640px){.icon-grid{grid-template-columns:1fr}.icon-item{border-right:none!important}}
 
@@ -679,7 +695,7 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .faq-cat-btn.actif{background:var(--encre);border-color:var(--encre);color:var(--fond)}
 .faq-cat-btn:hover:not(.actif){border-color:var(--encre)}
 
-.faq-section{margin-bottom:64px}
+.faq-section{margin-bottom:64px;scroll-margin-top:110px} /* ancre (faq#pratique…) non masquée par la nav fixe */
 .faq-section:last-child{margin-bottom:0}
 .faq-section-titre{font-size:clamp(24px,3vw,34px);margin-bottom:12px}
 .faq-section-titre em{font-style:italic;color:var(--encre-2)}
@@ -744,6 +760,10 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .legal ul li::before{content:"—";position:absolute;left:0;color:var(--or)}
 .legal a{color:var(--encre);text-decoration:underline;text-underline-offset:3px}
 .legal a:hover{color:var(--encre-2)}
+/* Bouton dans le texte (ex. « Gérer les cookies ») : même rendu qu'un lien */
+.lien-texte{font:inherit;color:var(--encre);background:none;border:0;padding:0;cursor:pointer;
+  text-decoration:underline;text-underline-offset:3px}
+.lien-texte:hover{color:var(--encre-2)}
 .legal strong{font-weight:500;color:var(--encre)}
 
 /* Bloc identité : les informations réglementaires, lisibles d'un coup d'œil */
@@ -795,6 +815,10 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .footer-legal a{font-size:11.5px;color:var(--encre-2);text-decoration:none;
   letter-spacing:.04em;transition:color .2s}
 .footer-legal a:hover{color:var(--encre);text-decoration:underline;text-underline-offset:3px}
+/* « Gérer les cookies » : un bouton (il agit sur la page), habillé comme les liens voisins */
+.footer-legal button{font:inherit;font-size:11.5px;color:var(--encre-2);letter-spacing:.04em;
+  background:none;border:0;padding:0;cursor:pointer;transition:color .2s}
+.footer-legal button:hover{color:var(--encre);text-decoration:underline;text-underline-offset:3px}
 
 /* Case de consentement du formulaire de contact */
 .field-consent{flex-direction:row;align-items:flex-start;gap:12px}
@@ -823,63 +847,3 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
   .cookie-actions{width:100%}
   .cookie-actions .btn{flex:1}
 }
-
-/* ==========================================================================
-   INTRO — « La lymphe se remet à circuler » (page d'accueil, intro.js)
-   Première visite : rideau vert encre (le poids) sur lequel un réseau
-   lymphatique se remplit puis se draine ; la lumière s'ouvre depuis le
-   ganglion (la légèreté). Le réseau reste ensuite en filigrane derrière le
-   texte du hero. Absent si mouvement réduit ou WebGL2 indisponible.
-   ========================================================================== */
-.hero{position:relative}
-.hero-content{position:relative;z-index:1}
-.lymphe-canvas{
-  position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;
-  opacity:0;transition:opacity 1.4s var(--r);
-}
-.lymphe-canvas.visible{opacity:1}
-.lymphe-canvas.au-dessus{z-index:401;transition:none}
-
-/* Défilement bloqué jusqu'à la fin du rideau ; la place de la barre de défilement
-   reste réservée pour que la page ne se décale pas quand elle réapparaît. */
-html.intro-on,html.intro-verrou{overflow:hidden;scrollbar-gutter:stable}
-html.intro-verrou{background:var(--fond);transition:background-color .9s var(--r)}
-html.intro-on{background:#142825}
-html.intro-on .hero .reveal{opacity:0;transform:translateY(14px)}
-html.intro-on .hero-media img{opacity:0}
-
-.intro-rideau,.intro-marque{display:none}
-html.intro-on .intro-rideau,.intro-rideau.actif{display:block}
-html.intro-on .intro-marque,.intro-marque.actif{display:flex}
-.intro-rideau{
-  position:fixed;inset:0;z-index:400;
-  background:radial-gradient(120% 90% at 50% 36%,#2B4B46 0%,#1F3A36 48%,#142825 100%);
-}
-/* Le nom sort du flou en même temps que le réseau, puis s'efface sans heurt */
-.intro-marque{
-  position:fixed;left:0;right:0;top:54svh;z-index:402;
-  flex-direction:column;align-items:center;text-align:center;padding:0 24px;
-  pointer-events:none;transition:opacity 1s var(--r);
-}
-.intro-nom{
-  font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;
-  font-size:clamp(38px,5.4vw,64px);line-height:1.05;color:var(--fond);
-  letter-spacing:.06em;opacity:0;transform:translateY(8px);filter:blur(7px);
-  transition:opacity 1.5s var(--r),transform 2.2s var(--r),filter 1.6s var(--r),letter-spacing 2.8s var(--r);
-}
-.intro-metier{
-  margin-top:14px;display:flex;align-items:center;gap:12px;
-  font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:rgba(245,240,232,.72);
-  opacity:0;transition:opacity 1.4s var(--r) .35s;
-}
-.intro-metier::before,.intro-metier::after{content:"";width:22px;height:1px;background:var(--or)}
-.intro-passer{
-  position:fixed;left:0;right:0;bottom:28px;
-  font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,240,232,.38);
-  opacity:0;transition:opacity 1.2s var(--r) .4s;
-}
-.intro-passer .tactile{display:none}
-@media(hover:none){.intro-passer .tactile{display:inline}.intro-passer .souris{display:none}}
-.intro-marque.on .intro-nom{opacity:1;transform:none;filter:none;letter-spacing:.02em}
-.intro-marque.on .intro-metier,.intro-marque.on .intro-passer{opacity:1}
-.intro-marque.off{opacity:0}
