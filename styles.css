@@ -559,6 +559,13 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .footer-meta a{text-decoration:none}
 .footer-meta a:hover{color:var(--encre)}
 
+/* Accès direct aux pages de soin, en pied de toutes les pages (maillage interne).
+   Même habillage que .footer-links ; liste placée avant .footer-legal, qui perd alors son filet. */
+.footer-soins{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:center;border-top:1px solid rgba(169,130,79,.16);margin-top:30px;padding-top:20px}
+.footer-soins a{text-decoration:none;letter-spacing:.08em;text-transform:uppercase;font-size:11px;color:var(--encre-2);transition:color .2s}
+.footer-soins a:hover,.footer-soins a[aria-current="page"]{color:var(--encre)}
+.footer-soins + .footer-legal{border-top:none;margin-top:0;padding-top:16px}
+
 /* BARRE STICKY MOBILE — fonctionnelle : les deux actions qui comptent, toujours là */
 .sticky-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:250;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(245,240,232,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(169,130,79,.22)}
 .sticky-cta a{flex:1;text-align:center;padding:13px 10px;font-size:11.5px}
@@ -575,6 +582,19 @@ footer{border-top:1px solid rgba(169,130,79,.2);padding:44px 0}
 .page-head h1 em,.page-head .page-titre em{font-style:italic;color:var(--encre-2)}
 .page-head p{font-size:16px;color:var(--encre-2);line-height:1.85;max-width:560px;margin:0 auto}
 @media(max-width:700px){.page-head{padding:118px 0 64px}}
+
+/* Fil d'Ariane des pages de soin. C'est un <div role="navigation">, pas un <nav> :
+   la règle globale nav{position:fixed} (barre du haut) s'appliquerait à tout <nav>. */
+.fil{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 10px;margin-bottom:28px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--encre-2)}
+.fil a{color:var(--encre-2);text-decoration:none;border-bottom:1px solid rgba(35,65,61,.25);transition:color .2s,border-color .2s}
+.fil a:hover{color:var(--encre);border-color:var(--encre)}
+.fil [aria-current="page"]{color:var(--encre)}
+.fil [aria-hidden="true"]{color:var(--or)}
+
+/* Rangée de liens vers les pages de soin (accueil, soins, pages de soin) */
+.liens-soins{display:flex;flex-wrap:wrap;gap:14px 30px;margin-top:40px}
+.liens-soins.centre{justify-content:center}
+.soins .liens-soins .text-link,.bleed .liens-soins .text-link{margin-top:0}
 
 /* Grille de signaux/repères — façon fiche technique : cellules nettes, pas de cartes flottantes */
 .signals{display:grid;grid-template-columns:1fr 1fr;margin-top:48px;border-top:1px solid rgba(169,130,79,.28)}
